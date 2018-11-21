@@ -24,8 +24,9 @@
             <!--<img src="../../assets/images/contribute.jpg" alt="contribute">-->
           <!--</div>-->
           <a-layout class="layout-contribute">
-            <a-icon type="arrow-up" style="color: #fff; background: #d54321"/>
-            <span style="background: #d54321; color: #fff; font-weight: 200">投稿</span>
+            <!--<a-icon type="arrow-up" class="up" style="color: #fff"/>-->
+            <img src="../../assets/images/up.jpg" alt="up">
+            <span style="color: #fff; font-weight: 200">投稿</span>
           </a-layout>
         </a-menu-item>
       </a-menu>
@@ -78,4 +79,8 @@ export default {
     margin-top 30px
   .search
     margin-top 20px
+  .layout-contribute
+    width 61px
+    height 91px
+    folat center
 </style>
