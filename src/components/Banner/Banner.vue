@@ -1,15 +1,15 @@
 <template>
   <a-layout id="components-layout-top" class="layout">
     <a-layout-header class="header">
-      <a-menu class="menu-left" theme="white" mode="horizontal">
-        <a-menu-item class="logo">
-          <img src="../../assets/images/logo.jpg" alt="logo">
-        </a-menu-item>
-        <a-menu-item class="banner-home"><a-icon class="home" type="home"/>主站</a-menu-item>
-        <a-menu-item class="banner-show"><a-icon class="show" type="appstore-o" />展柜</a-menu-item>
-        <a-menu-item class="banner-exchange"><a-icon class="exchange" type="gift" />兑换</a-menu-item>
-        <a-menu-item class="search">
-          <a-input-search placeholder="input search text" style="width: 200px" @search="onSearch"/>
+      <a-menu class="menu" theme="white" mode="horizontal">
+          <a-menu-item class="logo">
+            <img src="../../assets/images/logo.jpg" alt="logo">
+          </a-menu-item>
+          <a-menu-item class="banner-home"><a-icon class="home" type="home"/>主站</a-menu-item>
+          <a-menu-item class="banner-show"><a-icon class="show" type="appstore-o" />展柜</a-menu-item>
+          <a-menu-item class="banner-exchange"><a-icon class="exchange" type="gift" />兑换</a-menu-item>
+        <a-menu-item>
+          <a-input-search class="search" placeholder="input search text" style="width: 200px" @search="onSearch"/>
         </a-menu-item>
         <a-menu-item class="banner-exchange">
           <!--<a-icon type="user" />-->
@@ -61,7 +61,7 @@ export default {
     width 120px
     height 31px
     background rgba(255,255,255,.2)
-    margin 16px 24px 16px 0
+    margin 0 5px 16px 0
     float left
   .search
     float right
@@ -70,4 +70,12 @@ export default {
     height 91px
     background-color #d54321
     border-radius 5px
+  .home
+    margin-top 30px
+  .show
+    margin-top 30px
+  .exchange
+    margin-top 30px
+  .search
+    margin-top 20px
 </style>
