@@ -1,20 +1,20 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    APP
-    <FooterGuide></FooterGuide>
   </div>
 </template>
 
 <script>
 
-import FooterGuide from './components/FooterGuide/FooterGuide.vue'
+// import FooterGuide from './components/FooterGuide/FooterGuide.vue'
+// import Banner from './components/Banner/Banner.vue'
 
 export default {
-  name: 'App',
-  components: {
-    FooterGuide
-  }
+  name: 'App'// ,
+  // components: {
+  //   FooterGuide,
+  //   Banner
+  // }
 }
 </script>
 
