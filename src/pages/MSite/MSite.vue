@@ -1,6 +1,16 @@
 <template>
   <div>
-    <Banner></Banner>
+    <div>
+      <a-carousel autoplay class="carousel">
+        <div><img src="../../assets/images/msite/background.jpg" alt="background"></div>
+        <div><img src="../../assets/images/msite/background.jpg" alt="background"></div>
+        <div><img src="../../assets/images/msite/background.jpg" alt="background"></div>
+        <div><img src="../../assets/images/msite/background.jpg" alt="background"></div>
+      </a-carousel>
+    </div>
+    <div>
+      <Banner class="header"></Banner>
+    </div>
     <!--<FooterGuide></FooterGuide>-->
   </div>
 </template>
@@ -17,6 +27,22 @@ export default {
 }
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus">
+<style scoped>
+  .header {
+    margin: 0 0
+  }
+  .ant-carousel >>> .slick-slide {
+    margin-top: 70px;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .ant-carousel >>> .slick-slide img {
+    color: #fff;
+  }
+  .carousel {
+    margin-left: auto;
+    margin-right: auto;
+  }
 
 </style>

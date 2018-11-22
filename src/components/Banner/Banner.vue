@@ -35,7 +35,7 @@
       <!--</a-menu-item>-->
     <!--</a-menu>-->
     <ul class="header-left">
-      <li><a href=""><img src="../../assets/images/logo.jpg" alt="logo"></a></li>
+      <li><a href=""><img src="../../assets/images/banner/logo.jpg" alt="logo"></a></li>
       <li><a href=""><a-icon class="home" type="home"/><span>主站</span></a></li>
       <li><a href=""><a-icon class="show" type="appstore-o" /><span>展柜</span></a></li>
       <li><a href=""><a-icon class="exchange" type="gift" /><span>兑换</span></a></li>
@@ -44,7 +44,7 @@
       <li><a class="search"><a-input-search placeholder="请输入......." style="width: 200px" @search="onSearch"/></a></li>
       <li><a class="avatar"><a-badge :count="1"><a-avatar style="color:#1c213b; background-color: white" icon="user"/></a-badge></a></li>
       <li class="trace"><span>足迹</span></li>
-      <li><a class="contribute"><img src="../../assets/images/up.jpg" alt="up"></a></li>
+      <li><a class="contribute"><img src="../../assets/images/banner/up.jpg" alt="up"></a></li>
     </ul>
   </div>
 </template>
@@ -69,6 +69,8 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
+  .header
+    margin 0 0
   .header-left
     margin 0 0 0 100px
     width 600px
