@@ -1,7 +1,7 @@
 <template>
   <div>
     <Banner></Banner>
-    <FooterGuide></FooterGuide>
+    <!--<FooterGuide></FooterGuide>-->
   </div>
 </template>
 
