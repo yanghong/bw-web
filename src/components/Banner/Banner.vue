@@ -3,7 +3,7 @@
     <a-layout-header class="header">
       <a-menu class="menu" theme="white" mode="horizontal">
           <a-menu-item class="logo">
-            <img src="../../assets/images/logo.jpg" alt="logo">
+            <img src="../../assets/images/banner/logo.jpg" alt="logo">
           </a-menu-item>
           <a-menu-item class="banner-home"><a-icon class="home" type="home"/>主站</a-menu-item>
           <a-menu-item class="banner-show"><a-icon class="show" type="appstore-o" />展柜</a-menu-item>
@@ -13,10 +13,10 @@
         </a-menu-item>
         <a-menu-item class="banner-exchange">
           <!--<a-icon type="user" />-->
-          <img src="../../assets/images/login-icon.jpg" alt="login-icon">
-          <img src="../../assets/images/point.jpg" alt="point">
-          <img src="../../assets/images/default-avtar.jpg" alt="default">
-          <img src="../../assets/images/logined.jpg" alt="login">
+          <img src="../../assets/images/banner/login-icon.jpg" alt="login-icon">
+          <img src="../../assets/images/banner/point.jpg" alt="point">
+          <img src="../../assets/images/banner/default-avtar.jpg" alt="default">
+          <img src="../../assets/images/banner/logined.jpg" alt="login">
         </a-menu-item>
         <a-menu-item class="foot-trace">足迹</a-menu-item>
         <a-menu-item class="menu-contribute">
@@ -25,7 +25,7 @@
           <!--</div>-->
           <a-layout class="layout-contribute">
             <!--<a-icon type="arrow-up" class="up" style="color: #fff"/>-->
-            <img src="../../assets/images/up.jpg" alt="up">
+            <img src="../../assets/images/banner/up.jpg" alt="up">
             <span style="color: #fff; font-weight: 200">投稿</span>
           </a-layout>
         </a-menu-item>
