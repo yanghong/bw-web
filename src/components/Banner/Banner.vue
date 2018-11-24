@@ -39,8 +39,6 @@
       <li><a href=""><a-icon class="home" type="home"/><span>主站</span></a></li>
       <li><a href=""><a-icon class="show" type="appstore-o" /><span>展柜</span></a></li>
       <li><a href=""><a-icon class="exchange" type="gift" /><span>兑换</span></a></li>
-    </ul>
-    <ul class="header-right">
       <li><a class="search"><a-input-search placeholder="请输入......." style="width: 200px" @search="onSearch"/></a></li>
       <li><a class="avatar"><a-badge :count="1"><a-avatar style="color:#1c213b; background-color: white" icon="user"/></a-badge></a></li>
       <li class="trace"><span>足迹</span></li>
@@ -50,15 +48,11 @@
 </template>
 
 <script>
-import BannerItem from './BannerItem.vue'
 export default {
   name: 'Banner',
   data () {
     return {
     }
-  },
-  components: {
-    BannerItem
   },
   methods: {
     onSearch (value) {
@@ -69,51 +63,42 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  .header
-    margin 0 0
   .header-left
-    margin 0 0 0 100px
-    width 600px
-    height 350px
-    padding 0px
-    float left
-  .header-right
-    margin 0 50px 0 0
-    width 600px
-    height 350px
-    padding 0px
-    float right
-  li
     list-style-type none
-    float left
+    margin 0 0 0 100px
+    padding 0px
   a
-    display block
-    width 100px
-    height 50px
     font-family "Microsoft Sans Serif"
     line-height 50px
     text-align center
     text-decoration none
     font-size 15px
+    margin 5px 5px 0 5px
+  li
+    display inline
+  .right-li
+    float right
   span
     color black
   .home
     color #d54321
-    margin-top 30px
+    margin-top 20px
   .show
     color #d54321
-    margin-top 30px
+    margin-top 20px
   .exchange
     color #d54321
-    margin-top 30px
+    margin-top 20px
   .contribute
-    float right
-    width 61px
-    height 91px
-  .avatar
-    margin 10px 0px 0 70px
+    position absolute
+    right 288px
   .search
-    margin 10px 10px 0 10px
+    position absolute
+    right 500px
+  .avatar
+    position absolute
+    right 450px
   .trace
-    margin 25px 25px 0 0px
+    position absolute
+    right 390px
 </style>
