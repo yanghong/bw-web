@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Banner from '../../components/Banner/Banner.vue'
+import Banner from '../../components/Banner/BannerBw.vue'
 import FooterGuide from '../../components/FooterGuide/FooterGuide.vue'
 export default {
   name: 'MSite',
