@@ -1,19 +1,19 @@
 <template>
-	<div class="b-section-body">
-		<div class="b-l">
-			<BRowHead :category="category"></BRowHead>
-			<BRowBody :row="row"></BRowBody>
-		</div>
-		<div class="b-r">
-			<BRowRank :category="category" :categoryId="categoryId"></BRowRank>
-		</div>
-	</div>
+  <div class="b-section-body">
+    <div class="b-l">
+      <BRowHead :category="category"></BRowHead>
+      <BRowBody :row="row"></BRowBody>
+    </div>
+    <div class="b-r">
+      <BRowRank :category="category" :categoryId="categoryId"></BRowRank>
+    </div>
+  </div>
 </template>
 
 <script>
-import BRowHead from 'components/contentRow/BRowHead'
-import BRowBody from 'components/contentRow/BRowBody'
-import BRowRank from 'components/contentRow/BRowRank'
+import BRowHead from './BRowHead.vue'
+import BRowBody from './BRowBody.vue'
+import BRowRank from './BRowRank.vue'
 import { mapGetters } from 'vuex'
 export default {
 	props: {
@@ -55,7 +55,7 @@ export default {
 			width 700px
 			margin-bottom 50px
 		.b-r
-			float right 
+			float right
 			width 260px
 			min-height 360px
 			height 360px

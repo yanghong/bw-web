@@ -1,59 +1,59 @@
 <template>
-	<div class="b-body">
-		<div class="r-list-body">
-			<div class="r-list-wrapper" ref="listWrapper">
-				<ul class="rlist" v-if="rank.hot">
-					<li :class="{on: index === 0}" v-for="(item, index) in rank.hot.list">
-						<i class="number" :class="{n: index === 0 || index === 1 || index === 2}">
-							{{index + 1}}
-						</i>
-						<div class="preview">
-						<!-- :alt="item.title" -->
-							<a href="/video/av9211860/" :title="item.title" target="_blank">
-								<img data-img="" :src="item.pic" loaded="loaded"  style="opacity: 1;">
-								</a>
-						</div>
-						<a class="rl-info" href="/video/av9211860/" :title="item.title + item.pts" target="_blank">	
-							<div class="title t">{{item.title}}
-							</div>
-							<div class="i">
-								<b class="pts" :title="item.pts">综合评分：{{item.pts}}
-								</b>
-							</div>
-						</a>
-					</li>
-				</ul>
-				<ul class="rlist" v-if="rank.hot_original">
-					<li :class="{on: index === 0}" v-for="(item, index) in rank.hot.list">
-						<i class="number" :class="{n: index === 0 || index === 1 || index === 2}">
-							{{index + 1}}
-						</i>
-						<div class="preview">
-						<!-- :alt="item.title" -->
-							<a href="/video/av9211860/" :title="item.title" target="_blank">
-								<img data-img="" :src="item.pic" loaded="loaded"  style="opacity: 1;">
-								</a>
-						</div>
-						<a class="rl-info" href="/video/av9211860/" :title="item.title + item.pts" target="_blank">	
-							<div class="title t">{{item.title}}
-							</div>
-							<div class="i">
-								<b class="pts" :title="item.pts">综合评分：{{item.pts}}
-								</b>
-							</div>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-		<div class="more-link">
-			<a href="/ranking#!/all/1/1/7/" target="_blank">查看更多</a>
-		</div>
-	</div>
+  <div class="b-body">
+    <div class="r-list-body">
+      <div class="r-list-wrapper" ref="listWrapper">
+        <ul class="rlist" v-if="rank.hot">
+          <li :class="{on: index === 0}" v-for="(item, index) in rank.hot.list">
+            <i class="number" :class="{n: index === 0 || index === 1 || index === 2}">
+              {{index + 1}}
+            </i>
+            <div class="preview">
+            <!-- :alt="item.title" -->
+              <a href="/video/av9211860/" :title="item.title" target="_blank">
+                <img data-img="" :src="item.pic" loaded="loaded"  style="opacity: 1;">
+                </a>
+            </div>
+            <a class="rl-info" href="/video/av9211860/" :title="item.title + item.pts" target="_blank">
+              <div class="title t">{{item.title}}
+              </div>
+              <div class="i">
+                <b class="pts" :title="item.pts">综合评分：{{item.pts}}
+                </b>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <ul class="rlist" v-if="rank.hot_original">
+          <li :class="{on: index === 0}" v-for="(item, index) in rank.hot.list">
+            <i class="number" :class="{n: index === 0 || index === 1 || index === 2}">
+              {{index + 1}}
+            </i>
+            <div class="preview">
+            <!-- :alt="item.title" -->
+              <a href="/video/av9211860/" :title="item.title" target="_blank">
+                <img data-img="" :src="item.pic" loaded="loaded"  style="opacity: 1;">
+                </a>
+            </div>
+            <a class="rl-info" href="/video/av9211860/" :title="item.title + item.pts" target="_blank">
+              <div class="title t">{{item.title}}
+              </div>
+              <div class="i">
+                <b class="pts" :title="item.pts">综合评分：{{item.pts}}
+                </b>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="more-link">
+      <a href="/ranking#!/all/1/1/7/" target="_blank">查看更多</a>
+    </div>
+  </div>
 </template>
 
 <script>
-import { contentrankApi } from 'api'
+import { contentrankApi } from '../../api/index.js'
 export default {
 	data(){
 		return {
@@ -90,18 +90,18 @@ export default {
 	},
 	mounted() {
 		this.getrankData()
-	},				
+	},
 	methods: {
 		getrankData() {
 			//防止重复请求
 			if (this.isWeek && JSON.stringify(this.weekData) !== '{}') {
 				this.rank = this.weekData
 				return
-			} 
+			}
 			if (!this.isWeek && JSON.stringify(this.threeDayData) !== '{}') {
 				this.rank = this.threeDayData
 				return
-			} 
+			}
 
 			let param = {
 				categoryId: this.categoryId
@@ -133,7 +133,7 @@ export default {
 			overflow hidden
 			.r-list-wrapper
 				width 200%
-				margin-left 0%
+				margin-left 0
 				overflow hidden
 				transition .2s
 				.rlist

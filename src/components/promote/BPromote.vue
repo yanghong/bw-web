@@ -15,7 +15,7 @@
 			<div class="b-body" v-if="promotelist">
 				<ul class="rm-list">
 					<div>
-						<BPromoteItem v-for="item in promotelist" :promoteItem="item"></BPromoteItem>
+						<BPromoteItem v-for="item in promotelist" :promoteItem="item" :key="item"></BPromoteItem>
 					</div>
 				</ul>
 			</div>
@@ -51,7 +51,7 @@
 	</div>
 </template>
 <script>
-import BPromoteItem from 'components/promote/BPromoteItem'
+import BPromoteItem from './BPromoteItem.vue'
 import { mapGetters } from 'vuex'
 export default {
 	components: {
@@ -106,7 +106,7 @@ export default {
 						font-weight normal
 				.pmt-list
 					display inline-block
-					vertical-align bottom 
+					vertical-align bottom
 					margin-left 10px
 					margin-top 10px
 					.pmt-link
@@ -132,7 +132,7 @@ export default {
 						clear both
 						font-size 0
 		.b-r
-			float right 
+			float right
 			width 260px
 			margin-bottom 50px
 			height 195px

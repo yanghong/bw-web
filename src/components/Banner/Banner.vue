@@ -3,7 +3,7 @@
     <div class="topic-preview-wrapper">
       <div class="topic-preview-list-wrapper">
         <ul class="topic-preview" style="width: 500%;" ref="banner">
-          <BannerItem v-for="item in bannerlist" :banner="item"></BannerItem>
+          <BannerItem v-for="item in bannerlist" :key="item" :banner="item"></BannerItem>
         </ul>
       </div>
       <a class="more-topic" href="/topic/integrated-1.html" target="_blank" v-show="show">更多
@@ -12,12 +12,12 @@
       <div class="s-bottom">
         <div class="title" v-if="bannerlist[count]">
           <span class="">
-            <img src="//static.hdslb.com/images/base/ad.png" style="width: 32px; height: 20px: margin-left: 5px;vertical-align: middle;" v-if="bannerlist[count].is_ad">
+            <img src="//static.hdslb.com/images/base/ad.png" style="width: 32px; height: 20px; margin-left: 5px;vertical-align: middle;" v-if="bannerlist[count].is_ad">
             <a :href="bannerlist[count].url" target="_blank">{{ bannerlist[count].name }}</a>
           </span>
         </div>
         <ul class="slide-bar">
-          <li :class="{on: count == index}" v-for="(item, index) in bannerlist" @click="cutItem(index)"></li>
+          <li :class="{on: count == index}" v-for="(item, index) in bannerlist" :key="(item, index)" @click="cutItem(index)"></li>
         </ul>
       </div>
     </div>
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import BannerItem from 'components/banner/BannerItem'
+import BannerItem from './BannerItem.vue'
 import { mapGetters } from 'vuex'
 export default {
   data () {

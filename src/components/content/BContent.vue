@@ -26,69 +26,69 @@
 </template>
 
 <script>
-import Banner from 'components/banner/Banner'
-import BContentTop from 'components/contentTop/BContentTop'
-import BPromote from 'components/promote/BPromote'
-import BLive from 'components/live/BLive'
-import BContentRow from 'components/contentRow/BContentRow'
+import Banner from '../Banner/Banner.vue'
+import BContentTop from '../contentTop/BContentTop.vue'
+import BPromote from '../promote/BPromote.vue'
+import BLive from '../live/BLive.vue'
+import BContentRow from '../contentRow/BContentRow.vue'
 
 import { mapGetters } from 'vuex'
 export default {
-	props: {
-		rows: {
-			type: Array
-		}
-	},
-	components: {
-		Banner,
-		BContentTop,
-		BPromote,
-		BLive,
-		BContentRow
-	}
+  props: {
+    rows: {
+      type: Array
+    }
+  },
+  components: {
+    Banner,
+    BContentTop,
+    BPromote,
+    BLive,
+    BContentRow
+  }
 }
 </script>
 
 <style lang="stylus" scoped>
-	.content
-		zoom 1
-		.container-top-wrapper
-			&:after
-				content ''
-				display block
-				visibility hidden
-				height 0
-				clear both
-				font-size 0
-		.container-top
-			padding 0
-			margin 0 auto
-			margin-bottom 20px
-			zoom 1
-			width 980px
-			&:after
-				content ''
-				display block
-				visibility hidden
-				height 0
-				clear both
-				font-size 0
-			.b-l
-				float left
-				width 440px
-			.b-r
-				float right
-				width 540px
-				height auto
-		.container-row
-			margin 0 auto
-			zoom 1
-			width 980px
-			&:after
-				content ''
-				display block
-				visibility hidden
-				height 0
-				clear both
-				font-size 0
+  .content
+    zoom 1
+    .container-top-wrapper
+      &:after
+        content ''
+        display block
+        visibility hidden
+        height 0
+        clear both
+        font-size 0
+    .container-top
+      padding 0
+      margin 0 auto
+      margin-bottom 20px
+      zoom 1
+      width 980px
+      &:after
+        content ''
+        display block
+        visibility hidden
+        height 0
+        clear both
+        font-size 0
+      .b-l
+        float left
+        width 440px
+      .b-r
+        float right
+        width 540px
+        height auto
+    .container-row
+      margin 0 auto
+      zoom 1
+      width 980px
+      &:after
+        content ''
+        display block
+        visibility hidden
+        height 0
+        clear both
+        font-size 0
 </style>

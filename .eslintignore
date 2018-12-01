@@ -2,3 +2,5 @@
 /config/
 /dist/
 /*.js
+BMenu.vue
+BRowRankBody.vue

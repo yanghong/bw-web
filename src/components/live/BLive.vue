@@ -41,14 +41,14 @@
 </template>
 
 <script>
-import BLiveItem from 'components/live/BLiveItem'
-import BLiveRank from 'components/live/BLiveRank'
+  import BLiveItem from './BLiveItem.vue'
+import BLiveRank from './BLiveRank.vue'
 import { mapGetters } from 'vuex'
 export default {
-	components: {
-		BLiveItem,
-		BLiveRank
-	},
+  components: {
+    BLiveItem,
+    BLiveRank
+  },
 	computed: {
 		...mapGetters([
 			'requesting',
@@ -80,7 +80,7 @@ export default {
 					float left
 					.b-head-i
 						position absolute
-						left 0px
+						left 0
 						top -8px
 						width 40px
 						height 39px
@@ -96,7 +96,7 @@ export default {
 						display inline-block
 						font-size 18px
 						line-height 24px
-						color #222 
+						color #222
 						a
 							color #222
 						h2
@@ -160,7 +160,7 @@ export default {
 						visibility hidden
 						height 0
 						clear both
-						font-size 0						
+						font-size 0
 					.icon-refresh
 						background  url(../../assets/images/icons.png) -475px -89px no-repeat
 						display inline-block
