@@ -4,6 +4,7 @@ import MSite from '../pages/MSite/MSite.vue'
 import Search from '../pages/Search/Search.vue'
 import Order from '../pages/Order/Order.vue'
 import Profile from '../pages/Profile/Profile.vue'
+import NotFound from '../pages/404/404.vue'
 
 // 声明使用插件
 Vue.use(Router)
@@ -15,7 +16,7 @@ export default new Router({
       path: '/',
       name: 'MSite',
       component: MSite,
-      redirect: '/msite'
+      redirect: '/404'
     },
     {
       path: '/msite',
@@ -36,6 +37,11 @@ export default new Router({
       path: '/profile',
       name: 'Profile',
       component: Profile
+    },
+    {
+      path: '/404',
+      name: '404',
+      component: NotFound
     }
   ]
 })
