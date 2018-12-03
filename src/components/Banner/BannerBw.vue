@@ -12,11 +12,17 @@
           <a-input-search class="search" placeholder="input search text" style="width: 200px" @search="onSearch"/>
         </a-menu-item>
         <a-menu-item>
+          <a-popover title="Title">
+            <template slot="content">
+              <p>Content</p>
+              <p>Content</p>
+            </template>
           <!--<a-icon type="user" />-->
           <img class="login-class" src="../../assets/images/banner/login-icon.jpg" alt="login-icon">
           <img class="login-class" src="../../assets/images/banner/point.jpg" alt="point">
           <img class="login-class" src="../../assets/images/banner/default-avtar.jpg" alt="default">
           <img class="login-class" src="../../assets/images/banner/logined.jpg" alt="login">
+          </a-popover>
         </a-menu-item>
         <a-menu-item>
           <a-button></a-button>
