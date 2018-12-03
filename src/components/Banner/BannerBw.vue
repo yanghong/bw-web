@@ -11,14 +11,16 @@
         <a-menu-item>
           <a-input-search class="search" placeholder="input search text" style="width: 200px" @search="onSearch"/>
         </a-menu-item>
-        <a-menu-item class="banner-exchange">
+        <a-menu-item>
           <!--<a-icon type="user" />-->
-          <img src="../../assets/images/banner/login-icon.jpg" alt="login-icon">
-          <img src="../../assets/images/banner/point.jpg" alt="point">
-          <img src="../../assets/images/banner/default-avtar.jpg" alt="default">
-          <img src="../../assets/images/banner/logined.jpg" alt="login">
+          <img class="login-class" src="../../assets/images/banner/login-icon.jpg" alt="login-icon">
+          <img class="login-class" src="../../assets/images/banner/point.jpg" alt="point">
+          <img class="login-class" src="../../assets/images/banner/default-avtar.jpg" alt="default">
+          <img class="login-class" src="../../assets/images/banner/logined.jpg" alt="login">
         </a-menu-item>
-        <a-menu-item class="foot-trace">足迹</a-menu-item>
+        <a-menu-item>
+          <a-button></a-button>
+        </a-menu-item>
         <a-menu-item class="menu-contribute">
           <!--<div>-->
             <!--<img src="../../assets/images/contribute.jpg" alt="contribute">-->
@@ -55,32 +57,33 @@ export default {
 
 <style lang="stylus" rel="stylesheet/stylus">
   #components-layout-top
-    background-color white
+    background-color rgba(255,255,255,0)
+    position relative
+    z-index 10000
     .header
-      background-color white
+      background-color rgba(255,255,255,0)
   #components-layout-top .logo
-    width 120px
-    height 31px
     background rgba(255,255,255,.2)
-    margin 0 5px 16px 0
+    margin 40px 5px 16px 0
     float left
   .search
     float right
   .contribute
-    width 61px
-    height 91px
     background-color #d54321
     border-radius 5px
   .home
-    margin-top 30px
+    margin-top 70px
   .show
-    margin-top 30px
+    margin-top 70px
   .exchange
-    margin-top 30px
+    margin-top 70px
   .search
-    margin-top 20px
+    margin-top 65px
   .layout-contribute
-    width 61px
-    height 91px
     folat center
+    margin-top 55px
+  .foot-trace
+    margin-top 65px
+  .login-class
+    margin-top 65px
 </style>

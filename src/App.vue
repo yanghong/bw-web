@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <TopContainer></TopContainer>
+    <!--<TopContainer></TopContainer>-->
+    <BannerBw></BannerBw>
+    <!--<TopContainerBW></TopContainerBW>-->
     <BHeader></BHeader>
     <!--<BContent :rows="rows"></BContent>-->
     <!--<BNavSide :options="options" v-on:change="isShowMask"></BNavSide>-->
@@ -10,9 +12,11 @@
 
 <script>
   import TopContainer from './components/common/TopContainer.vue'
+  import TopContainerBW from './components/common/TopContainerBW.vue'
   import BHeader from './components/common/BHeader.vue'
   import BContent from './components/content/BContent.vue'
   import BNavSide from './components/nav/BNavSide'
+  import BannerBw from './components/Banner/BannerBw.vue'
 
   import { mapGetters } from 'vuex'
   export default {
@@ -21,7 +25,9 @@
       TopContainer,
       BHeader,
       BContent,
-      BNavSide
+      BNavSide,
+      BannerBw,
+      TopContainerBW
     },
     mounted() {
       this.$store.dispatch('getContentRows')

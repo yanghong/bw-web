@@ -41,9 +41,10 @@
 </template>
 
 <script>
-  import BLiveItem from './BLiveItem.vue'
+import BLiveItem from './BLiveItem.vue'
 import BLiveRank from './BLiveRank.vue'
 import { mapGetters } from 'vuex'
+
 export default {
   components: {
     BLiveItem,
