@@ -1,17 +1,17 @@
 <template>
-  <a-layout id="components-layout-top" class="layout">
-    <a-layout-header class="header">
+  <!--<a-layout id="components-layout-top" class="layout">-->
+    <!--<a-layout-header class="header">-->
       <a-menu class="menu" theme="white" mode="horizontal">
-          <a-menu-item class="logo">
+          <a-menu-item class="logo" key="1">
             <img src="../../assets/images/banner/logo.jpg" alt="logo">
           </a-menu-item>
-          <a-menu-item class="banner-home"><a-icon class="home" type="home"/>主站</a-menu-item>
-          <a-menu-item class="banner-show"><a-icon class="show" type="appstore-o" />展柜</a-menu-item>
-          <a-menu-item class="banner-exchange"><a-icon class="exchange" type="gift" />兑换</a-menu-item>
-        <a-menu-item>
+          <a-menu-item class="banner-home" key="2"><a-icon class="home" type="home"/>主站</a-menu-item>
+          <a-menu-item class="banner-show" key="3"><a-icon class="show" type="appstore-o" />展柜</a-menu-item>
+          <a-menu-item class="banner-exchange" key="4"><a-icon class="exchange" type="gift" />兑换</a-menu-item>
+        <a-menu-item  key="5">
           <a-input-search class="search" placeholder="input search text" style="width: 200px" @search="onSearch"/>
         </a-menu-item>
-        <a-menu-item>
+        <a-menu-item  key="6">
           <a-popover title="Title">
             <template slot="content">
               <p>Content</p>
@@ -24,22 +24,23 @@
           <img class="login-class" src="../../assets/images/banner/logined.jpg" alt="login">
           </a-popover>
         </a-menu-item>
-        <a-menu-item>
-          <a-button></a-button>
+
+        <a-menu-item  key="7">
+          <a-button>足迹</a-button>
         </a-menu-item>
-        <a-menu-item class="menu-contribute">
+        <a-menu-item class="menu-contribute"  key="8">
           <!--<div>-->
             <!--<img src="../../assets/images/contribute.jpg" alt="contribute">-->
           <!--</div>-->
           <a-layout class="layout-contribute">
             <!--<a-icon type="arrow-up" class="up" style="color: #fff"/>-->
-            <img src="../../assets/images/banner/up.jpg" alt="up">
+            <!--<img src="../../assets/images/banner/up.jpg" alt="up">做成背景-->
             <span style="color: #fff; font-weight: 200">投稿</span>
           </a-layout>
         </a-menu-item>
       </a-menu>
-    </a-layout-header>
-  </a-layout>
+    <!--</a-layout-header>-->
+  <!--</a-layout>-->
 </template>
 
 <script>
