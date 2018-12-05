@@ -1,12 +1,6 @@
 <template>
   <div id="app">
-    <!--<TopContainer></TopContainer>-->
-    <BannerBw></BannerBw>
-    <!--<TopContainerBW></TopContainerBW>-->
-    <BHeader></BHeader>
-    <!--<BContent :rows="rows"></BContent>-->
-    <!--<BNavSide :options="options" v-on:change="isShowMask"></BNavSide>-->
-    <!--<div class="wnd-mask" ref="mask" v-show="showMask"></div>-->
+    <router-view></router-view>
   </div>
 </template>
 
@@ -15,7 +9,7 @@
   import TopContainerBW from './components/common/TopContainerBW.vue'
   import BHeader from './components/common/BHeader.vue'
   import BContent from './components/content/BContent.vue'
-  import BNavSide from './components/nav/BNavSide'
+  import BNavSide from './components/nav/BNavSide.vue'
   import BannerBw from './components/Banner/BannerBw.vue'
 
   import { mapGetters } from 'vuex'

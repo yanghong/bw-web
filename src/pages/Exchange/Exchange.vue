@@ -5,7 +5,7 @@
 <script>
   import BannerBw from '../../components/Banner/BannerBw.vue'
   export default {
-    name: 'Profile',
+    name: 'Exchange',
     components: {
       BannerBw
     }
