@@ -1,5 +1,7 @@
 <template>
-
+  <div class="container">
+    <BannerBw></BannerBw>
+  </div>
 </template>
 
 <script>

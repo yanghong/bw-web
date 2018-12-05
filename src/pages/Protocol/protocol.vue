@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Banner></Banner>
+    <BannerBw></BannerBw>
     <div class="middle">
       <img src="../../assets/images/protocol/logo_big.jpg" alt="big-logo">
       <h1>用户协议</h1>
@@ -36,11 +36,11 @@
 </template>
 
 <script>
-  import Banner from '../../components/Banner/BannerBw'
+  import BannerBw from '../../components/Banner/BannerBw'
   export default {
     name: 'protocol',
     components: {
-      Banner
+      BannerBw
     },
     methods: {
       handleClick (e) {

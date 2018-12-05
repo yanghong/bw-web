@@ -1,7 +1,7 @@
 <template>
   <div id="main-container">
+    <BannerBw></BannerBw>
     <a-layout>
-      <a-layout-header class="header"><Banner></Banner></a-layout-header>
       <a-layout-content id="content">
         <div>
         <a-carousel autoplay class="carousel">
@@ -39,7 +39,6 @@
             </a-col>
           </a-row>
         </div>
-
       </a-layout-content>
       <!--<a-layout-footer>&lt;!&ndash;<FooterGuide></FooterGuide>&ndash;&gt;</a-layout-footer>-->
     </a-layout>
@@ -47,13 +46,13 @@
 </template>
 
 <script>
-import Banner from '../../components/Banner/BannerBw.vue'
+import BannerBw from '../../components/Banner/BannerBw.vue'
 import FooterGuide from '../../components/FooterGuide/FooterGuide.vue'
 export default {
   name: 'MSite',
   components: {
     FooterGuide,
-    Banner
+    BannerBw
   }
 }
 </script>
@@ -77,7 +76,7 @@ export default {
     margin-left: auto;
     margin-right: auto;
   }
-  #nav
+  .nav
     margin 0 auto
   a
     color black
