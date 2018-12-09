@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <BannerBw></BannerBw>
   </div>
 </template>

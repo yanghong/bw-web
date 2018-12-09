@@ -40,37 +40,37 @@ export default new Router({
       component: OtherPerson
     },
     {
-      path: 'profile',
+      path: '/profile',
       name: 'Profile',
       component: Profile
     },
     {
-      path: 'protocol',
+      path: '/protocol',
       name: 'Protocol',
       component: Protocol
     },
     {
-      path: 'search-result',
+      path: '/search-result',
       name: 'SearchResult',
       component: SearchResult
     },
     {
-      path: 'show',
+      path: '/show',
       name: 'Show',
       component: Show
     },
     {
-      path: 'show-detail',
+      path: '/show-detail',
       name: 'ShowDetail',
       component: ShowDetail
     },
     {
-      path: 'show-publish',
+      path: '/show-publish',
       name: 'ShowPublish',
       component: ShowPublish
     },
     {
-      path: 'video-detail',
+      path: '/video-detail',
       name: 'VideoDetail',
       component: VideoDetail
     }
