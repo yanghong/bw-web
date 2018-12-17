@@ -1,103 +1,99 @@
 <template>
   <div class="container">
     <BannerBw></BannerBw>
-
-    <a-layout>
-      <a-layout-content>
-        <a-row class="video-introduction">
-          <a-col :span="6">{{videoName}}</a-col>
-          <a-col :span="6">{{videoTime}}</a-col>
-          <a-col :span="6">{{introduction}}</a-col>
-          <a-col :span="6"><button>展开</button></a-col>
-        </a-row>
-        <div class="video_list">
-        <div class="video_ls clear"  ref="videoLs">
-          <div class="video_shows" v-for="(item,index) in srclist">
-            <div v-if="item.imsrc" class="div_videos" >
-              <img :src="'../../static/images/'+item.imsrc+'.jpg'" :ref="index"/>
-            </div>
-            <div v-if="item.videosrc"  class="div_videos" >
-              <video-player class="video-player vjs-custom-skin"
-                            :ref="index"
-                            :options="playerOptions"
-                            :playsinline="true"
-                            @play="onPlayerPlay($event)"
-                            @pause="onPlayerPause($event)"
-                            @ended="onPlayerEnded($event)"
-                            @loadeddata="onPlayerLoadeddata($event)"
-                            @waiting="onPlayerWaiting($event)"
-                            @playing="onPlayerPlaying($event)"
-                            @timeupdate="onPlayerTimeupdate($event)"
-                            @canplay="onPlayerCanplay($event)"
-                            @canplaythrough="onPlayerCanplaythrough($event)"
-                            @ready="playerReadied"
-                            @statechanged="playerStateChanged($event)"
-              >
-              </video-player>
+    <div class="content">
+      <a-layout>
+        <a-layout-content>
+          <a-row class="video-introduction">
+            <a-col :span="6">{{videoName}}</a-col>
+            <a-col :span="6">{{videoTime}}</a-col>
+            <a-col :span="6">{{introduction}}</a-col>
+            <a-col :span="6"><button>展开</button></a-col>
+          </a-row>
+          <div class="video_list">
+            <div class="video_ls clear"  ref="videoLs">
+              <div class="video_shows" v-for="(item,index) in srclist">
+                <div v-if="item.imsrc" class="div_videos" >
+                  <img :src="'../../static/images/'+item.imsrc+'.jpg'" :ref="index"/>
+                </div>
+                <div v-if="item.videosrc"  class="div_videos" >
+                  <video-player class="video-player vjs-custom-skin"
+                                :ref="index"
+                                :options="playerOptions"
+                                :playsinline="true"
+                                @play="onPlayerPlay($event)"
+                                @pause="onPlayerPause($event)"
+                                @ended="onPlayerEnded($event)"
+                                @loadeddata="onPlayerLoadeddata($event)"
+                                @waiting="onPlayerWaiting($event)"
+                                @playing="onPlayerPlaying($event)"
+                                @timeupdate="onPlayerTimeupdate($event)"
+                                @canplay="onPlayerCanplay($event)"
+                                @canplaythrough="onPlayerCanplaythrough($event)"
+                                @ready="playerReadied"
+                                @statechanged="playerStateChanged($event)"
+                  >
+                  </video-player>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-        <a-row class="videoRelate">
-          <a-col :span="4" class="visit-number">
-            <img src="../../assets/images/videoDetail/visit-number.png" alt="visitIcon">
-            <span>{{visitNumber}}</span>
-          </a-col>
-          <a-col :span="4" class="nice-number">
-            <img src="../../assets/images/videoDetail/niced-icon.png" alt="visitNiceIcon">
-            <img src="../../assets/images/videoDetail/niced.png" alt="visitedNice">
-            <span>{{niceNumber}}</span>
-          </a-col>
-          <a-col :span="4" class="collect-number">
-            <img src="../../assets/images/videoDetail/collect-number.png" alt="visitCollect">
-            <img src="../../assets/images/videoDetail/collect-number-icon.png" alt="visitCollectIcon">
-            <span>{{collectNumber}}</span>
-          </a-col>
-          <a-col :span="4">
-            <img src="../../assets/images/videoDetail/share-icon.png" alt="shareIcon">
-            <a-button><img src="" alt=""></a-button>
-          </a-col>
-          <a-col :span="4">
-          </a-col>
-          <a-col :span="4">
-            <a-layout>
-              <a-layout-content>
-                <img src="../../assets/images/videoDetail/lighting.png" alt="lighting">
-                <a class="lighting-ta">电TA</a>
-              </a-layout-content>
-              <a-layout-footer>
-                <span>一个电池只能电一次哦~</span>
-              </a-layout-footer>
-            </a-layout>
-          </a-col>
-        </a-row>
-      </a-layout-content>
-      <a-layout-sider class="main-sider">
-        <a-layout class="user-about">
-          <a-layout-content class="user-about-content">
-            <a-layout class="userInfo">
+          <a-row class="videoRelate">
+            <a-col :span="4" class="visit-number">
+              <img src="../../assets/images/videoDetail/visit-number.png" alt="visitIcon">
+              <span>{{visitNumber}}</span>
+            </a-col>
+            <a-col :span="4" class="nice-number">
+              <img src="../../assets/images/videoDetail/niced-icon.png" alt="visitNiceIcon">
+              <img src="../../assets/images/videoDetail/niced.png" alt="visitedNice">
+              <span>{{niceNumber}}</span>
+            </a-col>
+            <a-col :span="4" class="collect-number">
+              <img src="../../assets/images/videoDetail/collect-number.png" alt="visitCollect">
+              <img src="../../assets/images/videoDetail/collect-number-icon.png" alt="visitCollectIcon">
+              <span>{{collectNumber}}</span>
+            </a-col>
+            <a-col :span="4">
+              <img src="../../assets/images/videoDetail/share-icon.png" alt="shareIcon">
+              <a-button><img src="" alt=""></a-button>
+            </a-col>
+            <a-col :span="4">
+            </a-col>
+            <a-col :span="4">
               <a-layout>
-                <a-layout-sider class="userInfo-avatar">
-                  <img src="../../assets/images/videoDetail/avatar.png" alt="avatar">
-                </a-layout-sider>
-                <a-layout-content class="userInfo-text">
-                  <a-layout>
-                    <a-layout-header><h2><a href="">{{nikeName}}</a></h2><span>lv2</span></a-layout-header>
-                    <a-layout-content><!--<img src="" alt="">--><span>厂牌</span></a-layout-content>
-                    <a-layout-footer><span>{{personalIntroduction}}</span></a-layout-footer>
-                  </a-layout>
+                <a-layout-content>
+                  <img src="../../assets/images/videoDetail/lighting.png" alt="lighting">
+                  <a class="lighting-ta">电TA</a>
                 </a-layout-content>
+                <a-layout-footer>
+                  <span>一个电池只能电一次哦~</span>
+                </a-layout-footer>
               </a-layout>
-            </a-layout>
-          </a-layout-content>
-          <a-layout-footer>
-            <a-button>关注{{concernNumber}}</a-button>
-            <img src="../../assets/images/videoDetail/private-message.png" alt="privateMessage">
-          </a-layout-footer>
-        </a-layout>
-      </a-layout-sider>
-    </a-layout>
-
+            </a-col>
+          </a-row>
+        </a-layout-content>
+        <a-layout-sider class="main-sider">
+          <div class="user-about">
+            <div class="user-about-content">
+                  <div class="userInfo-avatar">
+                    <img src="../../assets/images/videoDetail/avatar.png" alt="avatar">
+                  </div>
+                  <div class="userInfo-text">
+                    <div class="nick-name-lv">
+                      <h2><a href="">{{nikeName}}</a></h2><span>lv2</span>
+                    </div>
+                    <!--<img src="" alt="">--><span>厂牌</span>
+                    <span>{{personalIntroduction}}</span>
+                  </div>
+            </div>
+            <div class="concern-message">
+              <a-button>关注{{concernNumber}}</a-button>
+              <img src="../../assets/images/videoDetail/private-message.png" alt="privateMessage">
+            </div>
+          </div>
+        </a-layout-sider>
+      </a-layout>
+    </div>
   </div>
 </template>
 
@@ -219,6 +215,9 @@
     display block
     clear both
     height 0
+  .content
+    width 75%
+    margin 0 auto
   .video-introduction
     color black
   .video_list
@@ -271,6 +270,29 @@
     color #00a0e9
   .concern
     color #00a0e9
-  .userInfo
-    margin-left 0
+  .main-sider
+    background-color white
+  .user-about
+    display -webkit-flex
+    display flex
+    -webkit-flex-direction column
+    flex-direction column
+  .user-about-content
+    width 329px
+    height 200px
+    display flex
+  .concern-message
+    display flex
+  .userInfo-avatar
+    width 99px
+    height 99px
+  .userInfo-text
+    width 209px
+    height 99px
+    display -webkit-flex
+    display flex
+    -webkit-flex-direction column
+    flex-direction column
+  .nick-name-lv
+    display flex
 </style>
