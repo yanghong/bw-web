@@ -2,7 +2,7 @@
   <div class="container">
     <Banner></Banner>
     <div class="content">
-      <img src="../../assets/images/404.jpg" alt="">
+      <img src="../../assets/images/404.jpg" alt="not fund">
     </div>
   </div>
 </template>
@@ -18,8 +18,6 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  img
-    text-align center
   .content
     width 75%
     margin 0 auto
