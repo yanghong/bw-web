@@ -1,6 +1,9 @@
 <template>
   <div>
     <BannerBw></BannerBw>
+    <div class="content">
+
+    </div>
   </div>
 </template>
 
@@ -15,5 +18,7 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-
+  .content
+    width 75%
+    margin 0 auto
 </style>

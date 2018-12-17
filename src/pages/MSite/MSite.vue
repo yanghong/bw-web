@@ -59,7 +59,9 @@ export default {
 
 <style lang="stylus" rel="stylesheet/stylus">
   #content
+    width 75%
     text-align center
+    margin 0 auto
   .header
     margin 0 0
     float top
