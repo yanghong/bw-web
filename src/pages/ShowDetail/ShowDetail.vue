@@ -1,10 +1,10 @@
 <template>
-  <div class="container">
-    <div class="header">
+  <a-layout class="container">
+    <a-layout-header class="header">
       <BannerBw></BannerBw>
-    </div>
-    <div class="content">
-      <div class="main-content">
+    </a-layout-header>
+    <a-layout>
+      <a-layout-content class="main-content">
         <a-row class="video-introduction">
           <a-col :span="6">{{videoName}}</a-col>
           <a-col :span="6">{{videoTime}}</a-col>
@@ -72,32 +72,32 @@
             </div>
           </a-col>
         </a-row>
-      </div>
-      <div class="main-sider">
-        <div class="user-about">
-          <div class="user-about-content">
-                <div class="userInfo-avatar">
-                  <img src="../../assets/images/videoDetail/avatar.png" alt="avatar">
-                </div>
-                <div class="userInfo-text">
-                  <div class="nick-name-lv">
-                    <h2><a href="">{{nikeName}}</a></h2><span>lv2</span>
-                  </div>
-                  <!--<img src="" alt="">--><span>厂牌</span>
-                  <span>{{personalIntroduction}}</span>
-                </div>
-          </div>
-          <div class="concern-message">
-            <a-button>关注{{concernNumber}}</a-button>
-            <img src="../../assets/images/videoDetail/private-message.png" alt="privateMessage">
-          </div>
-        </div>
-        <div class="recommend-video">
-          <SingleVideo></SingleVideo>
-        </div>
-      </div>
-    </div>
-  </div>
+      </a-layout-content>
+      <a-layout-sider class="main-sider">
+        <!--<div class="user-about">-->
+          <!--<div class="user-about-content">-->
+            <!--<div class="userInfo-avatar">-->
+              <!--<img src="../../assets/images/videoDetail/avatar.png" alt="avatar">-->
+            <!--</div>-->
+            <!--<div class="userInfo-text">-->
+              <!--<div class="nick-name-lv">-->
+                <!--<h2><a href="">{{nikeName}}</a></h2><span>lv2</span>-->
+              <!--</div>-->
+              <!--&lt;!&ndash;<img src="" alt="">&ndash;&gt;<span>厂牌</span>-->
+              <!--<span>{{personalIntroduction}}</span>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="concern-message">-->
+            <!--<a-button>关注{{concernNumber}}</a-button>-->
+            <!--<img src="../../assets/images/videoDetail/private-message.png" alt="privateMessage">-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="recommend-video">-->
+          <!--<SingleVideo></SingleVideo>-->
+        <!--</div>-->
+      </a-layout-sider>
+    </a-layout>
+</a-layout>
 </template>
 
 <script>
@@ -209,7 +209,21 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  .content
+  .container
     width 75%
     margin 0 auto
+  .header
+    width 70%
+    height 64px
+    background-color white
+  .video-introduction
+    width 70%
+    height 70px
+    background-color white
+  .video_list
+    width 70%
+    height 555px
+  .videoRelate
+    width 70%
+    height 100px
 </style>

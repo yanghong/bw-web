@@ -11,7 +11,7 @@
           <img src="../../assets/images/videoDetail/niced-icon.png" alt="">{{niceNumber}}
         </div>
         <div class="list-number">
-          <!--<img src="../../assets/images/videoDetail/comment-icon.png" alt="">{{listNumber}}-->
+          <img src="../../assets/images/videoDetail/comment-icon.png" alt="">{{listNumber}}
         </div>
       </div>
     </div>
@@ -42,7 +42,7 @@
   .video-cover
     width 331px
     height 173px
-    /*background-image url("../../assets/images/videoDetail/background-image.png")*/
+    background-image url("../../assets/images/videoDetail/background-image.png")
   .video-cover .title
     background-color #000000
     border-radius: 0px 0px 5px 5px
