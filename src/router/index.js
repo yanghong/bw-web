@@ -11,6 +11,7 @@ import Show from '../pages/Show/Show.vue'
 import ShowDetail from '../pages/ShowDetail/ShowDetail.vue'
 import ShowPublish from '../pages/ShowPublish/ShowPublish.vue'
 import VideoDetail from '../pages/VideoDetail/VideoDetail.vue'
+import AntDesignLayout from '../pages/TestV/antDesignLayout.vue'
 
 
 // 声明使用插件
@@ -73,6 +74,11 @@ export default new Router({
       path: '/video-detail',
       name: 'VideoDetail',
       component: VideoDetail
+    },
+    {
+      path: '/ant-design-layout',
+      name: 'AntDesignLayout',
+      component: AntDesignLayout
     }
   ]
 })
