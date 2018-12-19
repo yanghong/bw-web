@@ -66,6 +66,8 @@ export default {
     margin 0 auto
   .logo
     margin-left 100px
+    &:hover
+      border-bottom none
   .search
     float right
   .contribute
@@ -73,6 +75,8 @@ export default {
     border-radius 5px
   .home
     margin-top 30px
+    &:hover
+      border-bottom none
   .show
     margin-top 30px
   .exchange
@@ -86,4 +90,9 @@ export default {
     margin-top 15px
   .login-class
     margin-top 15px
+  .banner-home
+    &:hover
+      border-bottom none
+  .ant-menu-horizontal > .ant-menu-item:hover, .ant-menu-horizontal > .ant-menu-submenu:hover, .ant-menu-horizontal > .ant-menu-item-active, .ant-menu-horizontal > .ant-menu-submenu-active, .ant-menu-horizontal > .ant-menu-item-open, .ant-menu-horizontal > .ant-menu-submenu-open, .ant-menu-horizontal > .ant-menu-item-selected, .ant-menu-horizontal > .ant-menu-submenu-selected
+    border-bottom none
 </style>

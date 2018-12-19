@@ -216,14 +216,25 @@
     width 70%
     height 64px
     background-color white
+  .main-content
+    width 70%
+    padding 10px
   .video-introduction
     width 70%
     height 70px
     background-color white
+    margin 0 auto
   .video_list
     width 70%
     height 555px
+    margin 0 auto
   .videoRelate
     width 70%
     height 100px
+    margin 0 auto
+  .main-sider
+    width 30%
+    float right
+  .user-about
+    height 290px
 </style>
