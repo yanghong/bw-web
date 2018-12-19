@@ -1,22 +1,23 @@
 <template>
   <div class="container">
     <BannerBw class="banner"></BannerBw>
-    <div class="background-img">
-      <img src="../../assets/images/exchange/protocol_bkg.jpg" alt="background">
+    <div class="content">
+      <div class="background-img">
+        <img src="../../assets/images/exchange/protocol_bkg.jpg" alt="background">
+      </div>
+      <div id="nav">
+        <nav>
+          <a href="">摆玩热榜</a>
+          <a href="">原创作品</a>
+          <a href="">珍藏佳品</a>
+        </nav>
+      </div>
+      <a-row :gutter="gutters[gutterKey]">
+        <a-col v-for="(item, index) in colCounts[colCountKey]" :key="item.toString()" :span="24/colCounts[colCountKey]">
+          <div>Column</div>
+        </a-col>
+      </a-row>
     </div>
-    <div id="nav">
-      <nav>
-        <a href="">摆玩热榜</a>
-        <a href="">原创作品</a>
-        <a href="">珍藏佳品</a>
-      </nav>
-    </div>
-    <a-row :gutter="gutters[gutterKey]">
-      <a-col v-for="(item, index) in colCounts[colCountKey]" :key="item.toString()" :span="24/colCounts[colCountKey]">
-        <div>Column</div>
-      </a-col>
-    </a-row>
-
   </div>
 </template>
 
@@ -64,6 +65,9 @@
 <style lang="stylus" rel="stylesheet/stylus">
   .container
     text-align center
+  .content
+    width 75%
+    margin 0 auto
   .ant-carousel >>> .slick-slide {
     margin-top: 0px;
     text-align: center;
