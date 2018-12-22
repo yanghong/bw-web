@@ -1,7 +1,9 @@
 <template>
     <div class="container">
       <div class="video-cover">
-        <p class="title">{{videoTile}}</p>
+        <div class="title">
+          <p>{{videoTitle}}123</p>
+        </div>
       </div>
       <div class="video-info">
         <div class="visit-number">
@@ -25,7 +27,7 @@
         visitNumber: '999+',
         niceNumber: '999+',
         listNumber: '999+',
-        videoTile: '又来放毒气了，最丑朱雀来了'
+        videoTitle: '又来放毒气了，最丑朱雀来了'
       }
     }
   }
@@ -40,17 +42,37 @@
     -webkit-flex-direction column
     flex-direction column
   .video-cover
+    position relative
     width 331px
     height 173px
     background-image url("../../assets/images/videoDetail/background-image.png")
   .video-cover .title
-    background-color #000000
+    position absolute
+    left 0px
+    bottom 0px
+    width 331px
+    height 38px
+    color black
     border-radius: 0px 0px 5px 5px
-    opacity 0.3
-    margin-top 0px
-    margin-left 0px
+    background-color rgba(0,0,0,0.4)
+  p
+    margin-top 10px
+    margin-left 10px
+    margin-bottom 5px
+    color white
   .video-info
     width 100%
     height 10%
     display flex
+  .visit-number
+    margin-left 9px
+    margin-top 5px
+    margin-right 30px
+  .nice-number
+    margin-top 4px
+    margin-left 30px
+    margin-right 30px
+  .list-number
+    margin-top 10px
+    margin-left 30px
 </style>
