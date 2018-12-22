@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import testCom from '../../components/singleVideo/singleVideo.vue'
+  import testCom from '../../components/Banner/BannerBw.vue'
   export default {
     name: 'testComp',
     components: {
