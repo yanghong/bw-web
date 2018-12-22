@@ -12,6 +12,7 @@ import ShowDetail from '../pages/ShowDetail/ShowDetail.vue'
 import ShowPublish from '../pages/ShowPublish/ShowPublish.vue'
 import VideoDetail from '../pages/VideoDetail/VideoDetail.vue'
 import AntDesignLayout from '../pages/TestV/antDesignLayout.vue'
+import TestCom from '../pages/TestV/testComp.vue'
 
 
 // 声明使用插件
@@ -22,6 +23,11 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'MSite',
+      component: MSite
+    },
+    {
+      path: '/msite',
       name: 'MSite',
       component: MSite
     },
@@ -79,6 +85,11 @@ export default new Router({
       path: '/ant-design-layout',
       name: 'AntDesignLayout',
       component: AntDesignLayout
+    },
+    {
+      path: '/test-com',
+      name: 'TestCom',
+      component: TestCom
     }
   ]
 })
