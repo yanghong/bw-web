@@ -10,7 +10,7 @@
             <div><img src="../../assets/images/msite/background.jpg" alt="background"></div>
         </a-carousel>
         </div>
-        <div id="nav">
+        <div class="nav">
           <div class="nav-a">
             <a href="">时下热门</a>
           </div>
@@ -45,8 +45,9 @@
             <a href="">...</a>
           </div>
         </div>
-        <div class="gutter-example">
-          <a-row :gutter="16">
+        <a-divider style="margin-top: 0px; margin-bottom: 0px;"/>
+        <div class="suggest-video">
+          <a-row type="flex" justify="center" align="top">
             <a-col class="gutter-row" :span="8">
               <img src="../../assets/images/msite/met-1.jpg" alt="met">
             </a-col>
@@ -58,6 +59,18 @@
             </a-col>
           </a-row>
         </div>
+        <div class="title">
+          <div class="title-left">
+            <h1>{{selectedTitle}}</h1><span>推荐视频</span>
+          </div>
+          <div class="title-right">
+            <!--TODO 确定链接-->
+            <a href="">更多></a>
+          </div>
+        </div>
+        <div class="video-list">
+          <SingleVideo></SingleVideo>
+        </div>
       </div>
       <!--<a-layout-footer>&lt;!&ndash;<FooterGuide></FooterGuide>&ndash;&gt;</a-layout-footer>-->
   </div>
@@ -65,12 +78,19 @@
 
 <script>
 import BannerBw from '../../components/Banner/BannerBw.vue'
+import SingleVideo from '../../components/singleVideo/singleVideo.vue'
 import FooterGuide from '../../components/FooterGuide/FooterGuide.vue'
 export default {
   name: 'MSite',
   components: {
     FooterGuide,
-    BannerBw
+    BannerBw,
+    SingleVideo
+  },
+  data() {
+    return {
+      selectedTitle: '潮玩',// TODO 链接nav的选择项
+    }
   }
 }
 </script>
@@ -79,44 +99,58 @@ export default {
   #content
     width 75%
     margin 0 auto
-  .header
-    margin 0 0
-    float top
-    background-color white
-  .ant-carousel >>> .slick-slide {
-    margin-top: 0px;
-    text-align: center;
-    overflow: hidden;
-  }
-  .ant-carousel >>> .slick-slide img {
-    color: #fff;
-  }
-  .carousel {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  #nav
-    width 100%
-    height 60px
-    margin 0 auto
     display flex
-  #nav .nav-a
-    margin 10px 5px 10px 5px
+    display -webkit-flex
+    flex-direction column
+    justify-content center
+  .carousel
+    margin-left auto
+    margin-right auto
+  .nav
+    width 100%
+    height 55px
+    display flex
+    justify-content center
+  .nav .nav-a
+    margin 10px 5px 5px 5px
     color black
     flex-direction row
-  #nav .nav-a a
-    font-weight larger
-    color black
-  .gutter-example >>> .a-row > div {
-    background: transparent;
-    border: 0;
-  }
-  .gutter-box {
-    background: #00A0E9;
-    padding: 5px 0;
-  }
-  .gutter-row
-    width 30%
-    height 235px
-    margin 5px 5px
+  .nav .nav-a a
+    width 82px
+    height 20px
+    font-family MicrosoftYaHei
+    font-size 20.8px
+    font-weight normal
+    font-stretch normal
+    letter-spacing 0px
+    color #000000
+    margin-left 10px
+    margin-right 10px
+    &:hover
+      color coral
+  .suggest-video >>> .a-row > div
+    background transparent
+    border 0
+  .gutter-row img
+    width 95%
+  .title
+    width 100%
+    height 30px
+    margin-top 40px
+    position relative
+  .title .title-left
+    display flex
+    flex-direction row
+  .title .title-left span
+    margin-top 10px
+    margin-left 5px
+  .title .title-right
+    position absolute
+    top 5px
+    right 0px
+  .title .title-right a
+    color grey
+  .video-list
+    width 100%
+
 </style>

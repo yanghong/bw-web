@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="single-video-container">
       <div class="video-cover">
         <div class="title">
           <p>{{videoTitle}}123</p>
@@ -35,7 +35,7 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  .container
+  .single-video-container
     width 330px
     height 210px
     display flex
