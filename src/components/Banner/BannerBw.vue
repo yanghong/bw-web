@@ -44,9 +44,9 @@
         <!--<a href="" style="color: #fff; font-weight: 200;width: 50px;height: 50px; text-align: center; margin-top: 5px" class="contribute">投稿</a>-->
       </div>
     </div>
-
+    <!--phone get vcode login-->
     <div>
-      <a-modal :visible="visible" @ok="handleOk" @cancel="handleCancel" :footer="null">
+      <a-modal :visible="accountPhoneLoginVisible" @cancel="handleCancel" :footer="null">
         <div class="modal-container">
           <div class="static-header">
             <img src="../../assets/images/banner/modal-logo.png" alt="modal-logo">
@@ -63,10 +63,125 @@
             <a href="">帐号密码登录</a>
           </div>
           <div class="modal-login-button">
-            <a-button @click="login" block>登录</a-button>
+            <a-button @click="login" block style="background-color: coral; color: white;font-weight: bold">登录</a-button>
           </div>
           <div class="modal-register">
-            <span>没有帐号</span><a href="">注册</a>
+            <span>没有帐号?</span><a href="">注册</a>
+          </div>
+        </div>
+      </a-modal>
+    </div>
+    <!--just account and pwd login-->
+    <div>
+      <a-modal :visible="accountLoginVisible" @cancel="handleCancel" :footer="null">
+        <div class="modal-container">
+          <div class="static-header">
+            <img src="../../assets/images/banner/modal-logo.png" alt="modal-logo">
+            <span>帐号登录</span>
+          </div>
+          <div class="input-number">
+            <input v-model="phoneNumberOrMail" placeholder="手机号或邮箱"></input>
+          </div>
+          <div class="input-vcode">
+            <div class="get-vcode">
+              <input v-model="password" placeholder="密码"></input>
+            </div>
+            <div class="change-login-model">
+              <a class="goto-phone-login" @click="gotoPhoneLogin">手机验证码登录</a>
+              <a class="forget-pwd" @click="gotoResetPwd">忘记密码？</a>
+            </div>
+          </div>
+          <div class="modal-login-button">
+            <a-button @click="login" block style="background-color: coral; color: white;font-weight: bold">登录</a-button>
+          </div>
+          <div class="modal-register">
+            <span>没有帐号?</span><a href="">注册</a>
+          </div>
+        </div>
+      </a-modal>
+    </div>
+    <!--reset pwd-->
+    <div>
+      <a-modal :visible="accountResetPwd" @cancel="handleCancel" :footer="null">
+        <div class="modal-container">
+          <div class="static-header">
+            <img src="../../assets/images/banner/modal-logo.png" alt="modal-logo">
+            <span>密码重置</span>
+          </div>
+          <div class="input-number">
+            <input v-model="phoneNumber" placeholder="请输入11位手机号"></input>
+          </div>
+          <div class="reset-pwd-input-vcode">
+            <div class="reset-pwd-get-vcode">
+              <input v-model="vcode" placeholder="输入了6位手机号验证码"></input>
+              <a href="">获取短信验证码</a>
+            </div>
+          </div>
+          <div class="set-password">
+            <input v-model="setPassword" placeholder="设置密码"></input>
+          </div>
+          <div class="confirm-password">
+            <input v-model="confirmPassword" placeholder="请确认密码"></input>
+          </div>
+          <div class="modal-login-button">
+            <a-button @click="confirmResetPwd" block style="background-color: coral; color: white;font-weight: bold">确认</a-button>
+          </div>
+          <div class="modal-register">
+            <span>返回?</span><a @click="gotoLogin">登录</a>
+          </div>
+        </div>
+      </a-modal>
+    </div>
+    <!--reset pwd success-->
+    <div>
+      <a-modal :visible="accountResetPwdSuccess" @cancel="handleCancel" :footer="null">
+        <div class="modal-container">
+          <div class="static-header">
+            <img src="../../assets/images/banner/modal-logo.png" alt="modal-logo">
+            <span>帐号登录</span>
+          </div>
+          <div class="input-number">
+            <input v-model="phoneNumber" placeholder="请输入11位手机号"></input>
+          </div>
+          <div class="input-vcode">
+            <div class="get-vcode">
+              <input v-model="vcode" placeholder="输入了6位手机号验证码"></input>
+              <a href="">获取短信验证码</a>
+            </div>
+            <a href="">帐号密码登录</a>
+          </div>
+          <div class="modal-login-button">
+            <a-button @click="login" block style="background-color: coral; color: white;font-weight: bold">登录</a-button>
+          </div>
+          <div class="modal-register">
+            <span>没有帐号?</span><a href="">注册</a>
+          </div>
+        </div>
+      </a-modal>
+    </div>
+    <!--register-->
+    <div>
+      <a-modal :visible="accountRegister" @cancel="handleCancel" :footer="null">
+        <div class="modal-container">
+          <div class="static-header">
+            <img src="../../assets/images/banner/modal-logo.png" alt="modal-logo">
+            <span>帐号注册</span>
+          </div>
+          <div class="input-number">
+            <input v-model="phoneNumber" placeholder="请输入11位手机号"></input>
+          </div>
+          <div class="input-vcode">
+            <div class="get-vcode">
+              <input v-model="vcode" placeholder="输入了6位手机号验证码"></input>
+              <a href="">获取短信验证码</a>
+            </div>
+            <a href="">帐号密码登录</a>
+          </div>
+          <div class="modal-login-button">
+            <a-button @click="login" block style="background-color: coral; color: white;font-weight: bold">登录</a-button>
+          </div>
+          <div class="modal-register">
+            <span>没有帐号?</span><a href="">注册</a>
           </div>
         </div>
       </a-modal>
@@ -81,11 +196,19 @@ export default {
   data () {
     return {
       userStatus: 0,
-      visible: false,
+      accountPhoneLoginVisible: false,
+      accountLoginVisible: false,
+      accountResetPwdSuccess: false,
+      accountResetPwd: false,
+      accountRegister: false,
       ModalText: 'Content of the modal',
       confirmLoading: false,
       phoneNumber: undefined,
-      vcode:undefined
+      vcode:undefined,
+      phoneNumberOrMail: undefined,
+      password: undefined,
+      setPassword: undefined,
+      confirmPassword: undefined
     }
   },
   components: {
@@ -96,22 +219,34 @@ export default {
       console.log(value)
     },
     showModal () {
-      this.visible = true
+      this.accountLoginVisible = true
+    },
+    gotoPhoneLogin () {
+      this.accountLoginVisible = false;
+      this.accountPhoneLoginVisible = true;
+    },
+    gotoLogin () {
+      this.accountResetPwd = false;
+      this.accountLoginVisible = true;
+    },
+    gotoResetPwd () {
+      this.accountLoginVisible = false;
+      this.accountResetPwd = true;
     },
     login () {
-      this.visible = false
+      this.accountLoginVisible = false
     },
-    handleOk(e) {
-      this.ModalText = 'The modal will be closed after two seconds';
-      this.confirmLoading = true;
-      setTimeout(() => {
-        this.visible = false;
-        this.confirmLoading = false;
-      }, 2000);
+    confirmResetPwd () {
+      const self = this;
+      console.log(self.setPassword);
+      console.log(self.confirmPassword);
     },
-    handleCancel(e) {
-      console.log('Clicked cancel button');
-      this.visible = false
+    handleCancel () {
+      this.accountLoginVisible = false;
+      this.accountPhoneLoginVisible = false;
+      this.accountResetPwd = false;
+      this.accountResetPwdSuccess = false;
+      this.accountRegister = false;
     },
   }
 }
@@ -229,6 +364,46 @@ export default {
     position absolute
     right 0px
   .get-vcode input
+    -webkit-appearance none
+    -moz-appearance none
+    border none
+  .change-login-model
+    position relative
+  .change-login-model .forget-pwd
+    position absolute
+    right 0px
+  .modal-container .set-password input
+    width 460px
+    margin 10px 0px 10px 0px
+    -web-kit-appearance none
+    -moz-appearance none
+    border none
+    border-bottom-style solid
+    border-bottom-width thin
+    border-bottom-color black
+  .modal-container .confirm-password input
+    width 460px
+    margin 10px 0px 10px 0px
+    -web-kit-appearance none
+    -moz-appearance none
+    border none
+    border-bottom-style solid
+    border-bottom-width thin
+    border-bottom-color black
+  .reset-pwd-get-vcode
+    width 100%
+    position relative
+    margin 10px 0px 10px 0px
+    -web-kit-appearance none
+    -moz-appearance none
+    border none
+    border-bottom-style solid
+    border-bottom-width thin
+    border-bottom-color black
+  .reset-pwd-get-vcode a
+    position absolute
+    right 0px
+  .reset-pwd-get-vcode input
     -webkit-appearance none
     -moz-appearance none
     border none
