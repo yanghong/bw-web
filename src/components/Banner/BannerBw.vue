@@ -52,18 +52,21 @@
             <img src="../../assets/images/banner/modal-logo.png" alt="modal-logo">
             <span>帐号登录</span>
           </div>
-          <div class="input-1">
+          <div class="input-number">
             <input v-model="phoneNumber" placeholder="请输入11位手机号"></input>
           </div>
-          <div class="input-2">
-            <input v-model="vcode" placeholder="输入了6位手机号验证码"></input>
+          <div class="input-vcode">
+            <div class="get-vcode">
+              <input v-model="vcode" placeholder="输入了6位手机号验证码"></input>
+              <a href="">获取短信验证码</a>
+            </div>
             <a href="">帐号密码登录</a>
           </div>
           <div class="modal-login-button">
-            <a-button @click="login">登录</a-button>
+            <a-button @click="login" block>登录</a-button>
           </div>
           <div class="modal-register">
-            <span>没有帐号</span><div class="goto-register"><a href="">注册</a></div>
+            <span>没有帐号</span><a href="">注册</a>
           </div>
         </div>
       </a-modal>
@@ -187,11 +190,46 @@ export default {
   .banner-contribute
     position absolute
     right 15px
-  input
-    /*-web-kit-appearance none*/
-    /*-moz-appearance none*/
+  .modal-container .input-number input
+    width 460px
+    margin 60px 0px 10px 0px
+    -web-kit-appearance none
+    -moz-appearance none
     border none
     border-bottom-style solid
     border-bottom-width thin
     border-bottom-color black
+  .modal-container .input-vcode
+    width 460px
+    margin 10px 0px 60px 0px
+    -web-kit-appearance none
+    -moz-appearance none
+    border none
+  .static-header span
+    color coral
+    font SimHei
+    font-size large
+  .modal-login-button
+    margin 20px 0px 20px 0px
+  .modal-login-button a-button
+    width 460px
+    color coral
+  .modal-register
+    text-align center
+  .get-vcode
+    width 100%
+    position relative
+    -web-kit-appearance none
+    -moz-appearance none
+    border none
+    border-bottom-style solid
+    border-bottom-width thin
+    border-bottom-color black
+  .get-vcode a
+    position absolute
+    right 0px
+  .get-vcode input
+    -webkit-appearance none
+    -moz-appearance none
+    border none
 </style>
