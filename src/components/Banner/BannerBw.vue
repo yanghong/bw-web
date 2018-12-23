@@ -66,7 +66,7 @@
             <a-button @click="login" block style="background-color: coral; color: white;font-weight: bold">登录</a-button>
           </div>
           <div class="modal-register">
-            <span>没有帐号?</span><a href="">注册</a>
+            <span>没有帐号?</span><a @click="gotoRegister">注册</a>
           </div>
         </div>
       </a-modal>
@@ -95,7 +95,7 @@
             <a-button @click="login" block style="background-color: coral; color: white;font-weight: bold">登录</a-button>
           </div>
           <div class="modal-register">
-            <span>没有帐号?</span><a href="">注册</a>
+            <span>没有帐号?</span><a @click="gotoRegister">注册</a>
           </div>
         </div>
       </a-modal>
@@ -148,7 +148,7 @@
               <input v-model="vcode" placeholder="输入了6位手机号验证码"></input>
               <a href="">获取短信验证码</a>
             </div>
-            <a href="">帐号密码登录</a>
+            <a @click="gotoLogin">帐号密码登录</a>
           </div>
           <div class="modal-login-button">
             <a-button @click="login" block style="background-color: coral; color: white;font-weight: bold">登录</a-button>
@@ -175,13 +175,18 @@
               <input v-model="vcode" placeholder="输入了6位手机号验证码"></input>
               <a href="">获取短信验证码</a>
             </div>
-            <a href="">帐号密码登录</a>
+          </div>
+          <div class="set-password">
+            <input v-model="setPassword" placeholder="设置密码"></input>
+          </div>
+          <div class="confirm-password">
+            <input v-model="confirmPassword" placeholder="请确认密码"></input>
           </div>
           <div class="modal-login-button">
             <a-button @click="login" block style="background-color: coral; color: white;font-weight: bold">登录</a-button>
           </div>
           <div class="modal-register">
-            <span>没有帐号?</span><a href="">注册</a>
+            <span>没有帐号?</span><a @click="gotoLogin">登录</a>
           </div>
         </div>
       </a-modal>
@@ -226,12 +231,17 @@ export default {
       this.accountPhoneLoginVisible = true;
     },
     gotoLogin () {
+      this.accountRegister = false;
       this.accountResetPwd = false;
       this.accountLoginVisible = true;
     },
     gotoResetPwd () {
       this.accountLoginVisible = false;
       this.accountResetPwd = true;
+    },
+    gotoRegister () {
+      this.accountLoginVisible = false;
+      this.accountRegister = true;
     },
     login () {
       this.accountLoginVisible = false
