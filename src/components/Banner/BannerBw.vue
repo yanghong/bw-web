@@ -17,7 +17,7 @@
             <p>Content</p>
           </template>
           <!--<a-icon type="user" />-->
-          <div v-if="userStatus === 0">
+          <div v-if="userStatus === 0" @click="showModal">
             <img class="login-class" src="../../assets/images/banner/login-icon.jpg" alt="login-icon">
           </div>
           <div v-if="userStatus === 1">
@@ -44,6 +44,30 @@
         <!--<a href="" style="color: #fff; font-weight: 200;width: 50px;height: 50px; text-align: center; margin-top: 5px" class="contribute">投稿</a>-->
       </div>
     </div>
+
+    <div>
+      <a-modal :visible="visible" @ok="handleOk" @cancel="handleCancel" :footer="null">
+        <div class="modal-container">
+          <div class="static-header">
+            <img src="../../assets/images/banner/modal-logo.png" alt="modal-logo">
+            <span>帐号登录</span>
+          </div>
+          <div class="input-1">
+            <input v-model="phoneNumber" placeholder="请输入11位手机号"></input>
+          </div>
+          <div class="input-2">
+            <input v-model="vcode" placeholder="输入了6位手机号验证码"></input>
+            <a href="">帐号密码登录</a>
+          </div>
+          <div class="modal-login-button">
+            <a-button @click="login">登录</a-button>
+          </div>
+          <div class="modal-register">
+            <span>没有帐号</span><div class="goto-register"><a href="">注册</a></div>
+          </div>
+        </div>
+      </a-modal>
+    </div>
   </div>
 </template>
 
@@ -53,7 +77,12 @@ export default {
   name: 'Banner',
   data () {
     return {
-      userStatus: 0
+      userStatus: 0,
+      visible: false,
+      ModalText: 'Content of the modal',
+      confirmLoading: false,
+      phoneNumber: undefined,
+      vcode:undefined
     }
   },
   components: {
@@ -62,7 +91,25 @@ export default {
   methods: {
     onSearch (value) {
       console.log(value)
-    }
+    },
+    showModal () {
+      this.visible = true
+    },
+    login () {
+      this.visible = false
+    },
+    handleOk(e) {
+      this.ModalText = 'The modal will be closed after two seconds';
+      this.confirmLoading = true;
+      setTimeout(() => {
+        this.visible = false;
+        this.confirmLoading = false;
+      }, 2000);
+    },
+    handleCancel(e) {
+      console.log('Clicked cancel button');
+      this.visible = false
+    },
   }
 }
 </script>
@@ -140,4 +187,11 @@ export default {
   .banner-contribute
     position absolute
     right 15px
+  input
+    /*-web-kit-appearance none*/
+    /*-moz-appearance none*/
+    border none
+    border-bottom-style solid
+    border-bottom-width thin
+    border-bottom-color black
 </style>
