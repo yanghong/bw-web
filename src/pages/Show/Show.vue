@@ -2,6 +2,9 @@
   <div class="container">
     <BannerBw></BannerBw>
     <div class="content">
+      <div class="background-img">
+        <img src="../../assets/images/exchange/protocol_bkg.jpg" alt="background">
+      </div>
 
     </div>
   </div>
@@ -18,7 +21,8 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  .content
-    width 75%
-    margin 0 auto
+  .background-img
+    width 100%
+    margin-top 1px
+    margin-left 0px
 </style>

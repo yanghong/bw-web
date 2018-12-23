@@ -27,7 +27,8 @@
         visitNumber: '999+',
         niceNumber: '999+',
         listNumber: '999+',
-        videoTitle: '又来放毒气了，最丑朱雀来了'
+        videoTitle: '又来放毒气了，最丑朱雀来了',
+
       }
     }
   }

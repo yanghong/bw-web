@@ -1,30 +1,49 @@
 <template>
   <div id="main-container">
     <BannerBw></BannerBw>
-    <a-layout>
-      <a-layout-content id="content">
+      <div id="content">
         <div>
-        <a-carousel autoplay class="carousel">
-          <div><img src="../../assets/images/msite/background.jpg" alt="background"></div>
-          <div><img src="../../assets/images/msite/background.jpg" alt="background"></div>
-          <div><img src="../../assets/images/msite/background.jpg" alt="background"></div>
-          <div><img src="../../assets/images/msite/background.jpg" alt="background"></div>
+          <a-carousel autoplay class="carousel">
+            <div><img src="../../assets/images/msite/background.jpg" alt="background"></div>
+            <div><img src="../../assets/images/msite/background.jpg" alt="background"></div>
+            <div><img src="../../assets/images/msite/background.jpg" alt="background"></div>
+            <div><img src="../../assets/images/msite/background.jpg" alt="background"></div>
         </a-carousel>
-      </div>
+        </div>
         <div id="nav">
-          <nav>
+          <div class="nav-a">
             <a href="">时下热门</a>
+          </div>
+          <div class="nav-a">
             <a href="">潮玩</a>
+          </div>
+          <div class="nav-a">
             <a href="">可动人偶</a>
+          </div>
+          <div class="nav-a">
             <a href="">机甲</a>
+          </div>
+          <div class="nav-a">
             <a href="">积木/拼图</a>
+          </div>
+          <div class="nav-a">
             <a href="">电动航模</a>
+          </div>
+          <div class="nav-a">
             <a href="">军事模型</a>
+          </div>
+          <div class="nav-a">
             <a href="">手办/景品</a>
+          </div>
+          <div class="nav-a">
             <a href="">盒玩/食玩</a>
+          </div>
+          <div class="nav-a">
             <a href="">雕像</a>
+          </div>
+          <div class="nav-a">
             <a href="">...</a>
-          </nav>
+          </div>
         </div>
         <div class="gutter-example">
           <a-row :gutter="16">
@@ -39,9 +58,8 @@
             </a-col>
           </a-row>
         </div>
-      </a-layout-content>
+      </div>
       <!--<a-layout-footer>&lt;!&ndash;<FooterGuide></FooterGuide>&ndash;&gt;</a-layout-footer>-->
-    </a-layout>
   </div>
 </template>
 
@@ -60,7 +78,6 @@ export default {
 <style lang="stylus" rel="stylesheet/stylus">
   #content
     width 75%
-    text-align center
     margin 0 auto
   .header
     margin 0 0
@@ -78,11 +95,19 @@ export default {
     margin-left: auto;
     margin-right: auto;
   }
-  .nav
+  #nav
+    width 100%
+    height 60px
     margin 0 auto
-  a
+    display flex
+  #nav .nav-a
+    margin 10px 5px 10px 5px
     color black
-  .gutter-example >>> .ant-row > div {
+    flex-direction row
+  #nav .nav-a a
+    font-weight larger
+    color black
+  .gutter-example >>> .a-row > div {
     background: transparent;
     border: 0;
   }
@@ -90,4 +115,8 @@ export default {
     background: #00A0E9;
     padding: 5px 0;
   }
+  .gutter-row
+    width 30%
+    height 235px
+    margin 5px 5px
 </style>

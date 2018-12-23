@@ -4,15 +4,15 @@
       <div class="logo">
         <img src="../../assets/images/banner/logo.jpg" alt="logo">
       </div>
-      <div class="banner-home"><img class="banner-home-img" src="../../assets/images/banner/msite-home.png" alt="msite-home"><a href="">主站</a></div>
-      <div class="banner-show"><img src="../../assets/images/banner/msite-show.png" alt="show"><a href="">展柜</a></div>
-      <div class="banner-exchange"><img src="../../assets/images/banner/msite-exchange.png" alt="exchange"><a href="">兑换</a></div>
+      <div class="banner-home"><img class="banner-home-img" src="../../assets/images/banner/msite-home.png" alt="msite-home"><router-link :to="{ name: 'msite'}">主站</router-link></div>
+      <div class="banner-show"><img src="../../assets/images/banner/msite-show.png" alt="show"><router-link :to="{ name: 'show'}">展柜</router-link></div>
+      <div class="banner-exchange"><img src="../../assets/images/banner/msite-exchange.png" alt="exchange"><router-link :to="{ name: 'exchange'}">兑换</router-link></div>
       <div class="banner-search">
         <a-input-search class="search" placeholder="input search text" style="width: 200px" @search="onSearch"/>
       </div>
       <div class="login-avatar">
         <a-popover title="Title">
-          <template slot="content">
+          <template slot="content">exchange
             <p>Content</p>
             <p>Content</p>
           </template>
@@ -31,13 +31,17 @@
           </div>
         </a-popover>
       </div>
-
       <div class="foot-trace">
         <a href="">足迹</a>
       </div>
       <div class="banner-contribute" >
         <!--<div>-->
-        <img src="../../assets/images/banner/up.jpg" alt="contribute">
+        <div v-if="type === 'exchange'">
+          <img src="../../assets/images/banner/release.png" alt="release">
+        </div>
+        <div v-else>
+          <img src="../../assets/images/banner/up.jpg" alt="contribute">
+        </div>
         <!--</div>-->
         <!--<a-icon type="arrow-up" class="up" style="color: #fff"/>-->
         <!--<img src="../../assets/images/banner/up.jpg" alt="up">做成背景-->
@@ -60,7 +64,7 @@
               <input v-model="vcode" placeholder="输入了6位手机号验证码"></input>
               <a href="">获取短信验证码</a>
             </div>
-            <a href="">帐号密码登录</a>
+            <a @click="gotoLogin">帐号密码登录</a>
           </div>
           <div class="modal-login-button">
             <a-button @click="login" block style="background-color: coral; color: white;font-weight: bold">登录</a-button>
@@ -198,6 +202,9 @@
 import BannerItem from './BannerItem.vue'
 export default {
   name: 'Banner',
+  props: {
+    type: String
+  },
   data () {
     return {
       userStatus: 0,
@@ -231,6 +238,7 @@ export default {
       this.accountPhoneLoginVisible = true;
     },
     gotoLogin () {
+      this.accountPhoneLoginVisible = false;
       this.accountRegister = false;
       this.accountResetPwd = false;
       this.accountLoginVisible = true;

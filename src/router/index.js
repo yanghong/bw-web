@@ -23,72 +23,72 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'MSite',
+      name: 'root',
       component: MSite
     },
     {
       path: '/msite',
-      name: 'MSite',
+      name: 'msite',
       component: MSite
     },
     {
       path: '/404',
-      name: 'NotFound',
+      name: 'notFound',
       component: NotFound
     },
     {
       path: '/exchange',
-      name: 'Exchange',
+      name: 'exchange',
       component: Exchange
     },
     {
       path: '/other-person',
-      name: 'OtherPerson',
+      name: 'otherPerson',
       component: OtherPerson
     },
     {
       path: '/profile',
-      name: 'Profile',
+      name: 'profile',
       component: Profile
     },
     {
       path: '/protocol',
-      name: 'Protocol',
+      name: 'protocol',
       component: Protocol
     },
     {
       path: '/search-result',
-      name: 'SearchResult',
+      name: 'searchResult',
       component: SearchResult
     },
     {
       path: '/show',
-      name: 'Show',
+      name: 'show',
       component: Show
     },
     {
       path: '/show-detail',
-      name: 'ShowDetail',
+      name: 'showDetail',
       component: ShowDetail
     },
     {
       path: '/show-publish',
-      name: 'ShowPublish',
+      name: 'showPublish',
       component: ShowPublish
     },
     {
       path: '/video-detail',
-      name: 'VideoDetail',
+      name: 'videoDetail',
       component: VideoDetail
     },
     {
       path: '/ant-design-layout',
-      name: 'AntDesignLayout',
+      name: 'antDesignLayout',
       component: AntDesignLayout
     },
     {
       path: '/test-com',
-      name: 'TestCom',
+      name: 'testCom',
       component: TestCom
     }
   ]
