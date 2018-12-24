@@ -1,14 +1,15 @@
 <template>
-  <div id="main-container">
+  <div>
     <BannerBw></BannerBw>
+    <div id="main-container">
       <div id="content">
         <div>
           <a-carousel autoplay class="carousel">
-            <div><img src="../../assets/images/msite/background.jpg" alt="background"></div>
-            <div><img src="../../assets/images/msite/background.jpg" alt="background"></div>
-            <div><img src="../../assets/images/msite/background.jpg" alt="background"></div>
-            <div><img src="../../assets/images/msite/background.jpg" alt="background"></div>
-        </a-carousel>
+            <div class="carousel-img"><img src="../../assets/images/msite/background.jpg" alt="background"></div>
+            <div class="carousel-img"><img src="../../assets/images/msite/background.jpg" alt="background"></div>
+            <div class="carousel-img"><img src="../../assets/images/msite/background.jpg" alt="background"></div>
+            <div class="carousel-img"><img src="../../assets/images/msite/background.jpg" alt="background"></div>
+          </a-carousel>
         </div>
         <div class="nav">
           <div class="nav-a">
@@ -72,7 +73,10 @@
           <SingleVideo></SingleVideo>
         </div>
       </div>
-      <!--<a-layout-footer>&lt;!&ndash;<FooterGuide></FooterGuide>&ndash;&gt;</a-layout-footer>-->
+      <div class="msite-footer">
+        <FooterGuide></FooterGuide>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -98,6 +102,7 @@ export default {
 <style lang="stylus" rel="stylesheet/stylus">
   #content
     width 75%
+    height 100%
     margin 0 auto
     display flex
     display -webkit-flex
@@ -106,6 +111,10 @@ export default {
   .carousel
     margin-left auto
     margin-right auto
+  .carousel-img
+    width 100%
+    margin-top 1px
+    margin-left 0px
   .nav
     width 100%
     height 55px
@@ -152,5 +161,7 @@ export default {
     color grey
   .video-list
     width 100%
-
+  .msite-footer
+    width 100%
+    flex 0 0 auto
 </style>

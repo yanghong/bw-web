@@ -13,6 +13,7 @@ import ShowPublish from '../pages/ShowPublish/ShowPublish.vue'
 import VideoDetail from '../pages/VideoDetail/VideoDetail.vue'
 import AntDesignLayout from '../pages/TestV/antDesignLayout.vue'
 import TestCom from '../pages/TestV/testComp.vue'
+import SubmitVideo from '../pages/SubmitVideo/SubmitVideo.vue'
 
 
 // 声明使用插件
@@ -90,6 +91,11 @@ export default new Router({
       path: '/test-com',
       name: 'testCom',
       component: TestCom
+    },
+    {
+      path: '/submit-video',
+      name: 'submitVideo',
+      component: SubmitVideo
     }
   ]
 })
