@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import testCom from '../../components/Banner/BannerBw.vue'
+  import testCom from '../../components/FooterGuide/FooterGuide.vue'
   export default {
     name: 'testComp',
     components: {
@@ -15,7 +15,5 @@
 </script>
 
 <style lang="stylus" ref="stylesheet/styles">
-  .container
-    width 75%
-    margin 0 auto
+
 </style>
