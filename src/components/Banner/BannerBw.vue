@@ -200,6 +200,7 @@
 
 <script>
 import BannerItem from './BannerItem.vue'
+import { userChangePwd } from '../../api/userFetch.js'
 export default {
   name: 'Banner',
   props: {
@@ -266,6 +267,13 @@ export default {
       this.accountResetPwdSuccess = false;
       this.accountRegister = false;
     },
+    userChangePassword() {
+      const self = this;
+      userChangePwd()
+        .then({
+
+        });
+    }
   }
 }
 </script>
