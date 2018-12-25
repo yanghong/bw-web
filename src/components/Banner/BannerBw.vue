@@ -34,13 +34,13 @@
       <div class="foot-trace">
         <a href="">足迹</a>
       </div>
-      <div class="banner-contribute" >
+      <div class="banner-contribute">
         <!--<div>-->
         <div v-if="type === 'exchange'">
-          <img src="../../assets/images/banner/release.png" alt="release">
+          <router-link to="/show-publish"><img src="../../assets/images/banner/release.png" alt="release"></router-link>
         </div>
         <div v-else>
-          <img src="../../assets/images/banner/up.jpg" alt="contribute">
+          <router-link to="/submit-video"><img src="../../assets/images/banner/up.jpg" alt="contribute"></router-link>
         </div>
         <!--</div>-->
         <!--<a-icon type="arrow-up" class="up" style="color: #fff"/>-->
@@ -199,10 +199,9 @@
 </template>
 
 <script>
-import BannerItem from './BannerItem.vue'
-import { userChangePwd } from '../../api/userFetch.js'
+// import { userChangePwd } from '../../api/userFetch.js'
 export default {
-  name: 'Banner',
+  name: 'BannerBw',
   props: {
     type: String
   },
@@ -223,9 +222,6 @@ export default {
       setPassword: undefined,
       confirmPassword: undefined
     }
-  },
-  components: {
-    BannerItem
   },
   methods: {
     onSearch (value) {
@@ -267,13 +263,12 @@ export default {
       this.accountResetPwdSuccess = false;
       this.accountRegister = false;
     },
-    userChangePassword() {
-      const self = this;
-      userChangePwd()
-        .then({
-
-        });
-    }
+    // userChangePassword() {
+    //   const self = this;
+    //   userChangePwd()
+    //     .then({
+    //     });
+    // }
   }
 }
 </script>

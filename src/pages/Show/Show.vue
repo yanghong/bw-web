@@ -5,14 +5,14 @@
       <div class="background-img">
         <img src="../../assets/images/exchange/protocol_bkg.jpg" alt="background">
       </div>
-      <div class="nav">
-        <div class="nav-a">
+      <div class="show-nav">
+        <div class="show-nav-a">
           <a href="">摆玩热榜</a>
         </div>
-        <div class="nav-a">
+        <div class="show-nav-a">
           <a href="">原创作品</a>
         </div>
-        <div class="nav-a">
+        <div class="show-nav-a">
           <a href="">珍藏佳品</a>
         </div>
       </div>
@@ -148,18 +148,18 @@
     height 234px
     margin-top 1px
     margin-left 0px
-  .nav
+  .show-nav
     width 600px
     height 40px
     display flex
     display -webkit-flex
     flex-direction row
     margin 10px auto
-  .nav .nav-a
+  .show-nav .show-nav-a
     width 84px
     height 21px
     margin 5px 60px 10px 10px
-  .nav .nav-a a
+  .show-nav .show-nav-a a
     font-family MicrosoftYaHei
     font-size 20.8px
     font-weight normal
