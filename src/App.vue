@@ -24,7 +24,7 @@
       TopContainerBW
     },
     mounted() {
-      this.$store.dispatch('getContentRows')
+      // this.$store.dispatch('getContentRows')
     },
     data() {
       return {
@@ -45,14 +45,14 @@
         'error',
         'rows'
       ]),
-      options() {
-        let options = {
-          offset: 100, //偏移的距离
-          items: this.rows,
-          offsetTop: 0 //距离顶部距离
-        }
-        return options
-      }
+      // options() {
+      //   let options = {
+      //     offset: 100, //偏移的距离
+      //     items: this.rows,
+      //     offsetTop: 0 //距离顶部距离
+      //   }
+      //   return options
+      // }
     },
     methods: {
       isShowMask() {
