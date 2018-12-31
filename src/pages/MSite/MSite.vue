@@ -130,13 +130,13 @@ export default {
     width 82px
     height 20px
     font-family MicrosoftYaHei
-    font-size 13px
+    font-size 17px
     font-weight normal
     font-stretch normal
     letter-spacing 0px
     color #000000
-    margin-left 8px
-    margin-right 8px
+    margin-left 15px
+    margin-right 15px
     &:hover
       color coral
   .suggest-video >>> .a-row > div
