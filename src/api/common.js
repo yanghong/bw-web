@@ -25,8 +25,8 @@ export function upload() {
   })
 };
 
-export function getVcode() {
-  return axios.get(url.getVcode).then((response) => {
+export function getVcode(params) {
+  return axios.get(url.getVcode,{params}).then((response) => {
     return response.data
   })
 };

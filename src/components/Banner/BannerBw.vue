@@ -110,17 +110,17 @@
             <span>帐号登录</span>
           </div>
           <div class="input-number">
-            <input v-model="phoneNumber" placeholder="请输入11位手机号"></input>
+            <input v-model="phoneNumber" placeholder="请输入11位手机号"/>
           </div>
           <div class="input-vcode">
             <div class="get-vcode">
-              <input v-model="vcode" placeholder="输入了6位手机号验证码"></input>
+              <input v-model="vcode" placeholder="输入了6位手机号验证码"/>
               <a href="">获取短信验证码</a>
             </div>
             <a @click="gotoLogin">帐号密码登录</a>
           </div>
           <div class="modal-login-button">
-            <a-button @click="login" block style="background-color: coral; color: white;font-weight: bold">登录</a-button>
+            <a-button @click="userLogin" block style="background-color: coral; color: white;font-weight: bold">登录</a-button>
           </div>
           <div class="modal-register">
             <span>没有帐号?</span><a @click="gotoRegister">注册</a>
@@ -137,11 +137,11 @@
             <span>帐号登录</span>
           </div>
           <div class="input-number">
-            <input v-model="phoneNumberOrMail" placeholder="手机号或邮箱"></input>
+            <input v-model="loginParams.phoneNumberOrMail" placeholder="手机号或邮箱"/>
           </div>
           <div class="input-vcode">
             <div class="get-vcode">
-              <input v-model="password" placeholder="密码"></input>
+              <input v-model="loginParams.password" placeholder="密码"/>
             </div>
             <div class="change-login-model">
               <a class="goto-phone-login" @click="gotoPhoneLogin">手机验证码登录</a>
@@ -149,7 +149,7 @@
             </div>
           </div>
           <div class="modal-login-button">
-            <a-button @click="login" block style="background-color: coral; color: white;font-weight: bold">登录</a-button>
+            <a-button @click="userLogin" block style="background-color: coral; color: white;font-weight: bold">登录</a-button>
           </div>
           <div class="modal-register">
             <span>没有帐号?</span><a @click="gotoRegister">注册</a>
@@ -166,19 +166,19 @@
             <span>密码重置</span>
           </div>
           <div class="input-number">
-            <input v-model="phoneNumber" placeholder="请输入11位手机号"></input>
+            <input v-model="phoneNumber" placeholder="请输入11位手机号"/>
           </div>
           <div class="reset-pwd-input-vcode">
             <div class="reset-pwd-get-vcode">
-              <input v-model="vcode" placeholder="输入了6位手机号验证码"></input>
+              <input v-model="vcode" placeholder="输入了6位手机号验证码"/>
               <a href="">获取短信验证码</a>
             </div>
           </div>
           <div class="set-password">
-            <input v-model="setPassword" placeholder="设置密码"></input>
+            <input v-model="setPassword" placeholder="设置密码"/>
           </div>
           <div class="confirm-password">
-            <input v-model="confirmPassword" placeholder="请确认密码"></input>
+            <input v-model="confirmPassword" placeholder="请确认密码"/>
           </div>
           <div class="modal-login-button">
             <a-button @click="confirmResetPwd" block style="background-color: coral; color: white;font-weight: bold">确认</a-button>
@@ -198,17 +198,17 @@
             <span>帐号登录</span>
           </div>
           <div class="input-number">
-            <input v-model="phoneNumber" placeholder="请输入11位手机号"></input>
+            <input v-model="phoneNumber" placeholder="请输入11位手机号"/>
           </div>
           <div class="input-vcode">
             <div class="get-vcode">
-              <input v-model="vcode" placeholder="输入了6位手机号验证码"></input>
+              <input v-model="vcode" placeholder="输入了6位手机号验证码"/>
               <a href="">获取短信验证码</a>
             </div>
             <a @click="gotoLogin">帐号密码登录</a>
           </div>
           <div class="modal-login-button">
-            <a-button @click="login" block style="background-color: coral; color: white;font-weight: bold">登录</a-button>
+            <a-button @click="userLogin" block style="background-color: coral; color: white;font-weight: bold">登录</a-button>
           </div>
           <div class="modal-register">
             <span>没有帐号?</span><a href="">注册</a>
@@ -225,22 +225,22 @@
             <span>帐号注册</span>
           </div>
           <div class="input-number">
-            <input v-model="phoneNumber" placeholder="请输入11位手机号"></input>
+            <input v-model="registerParams.mobile" placeholder="请输入11位手机号"/>
           </div>
           <div class="input-vcode">
             <div class="get-vcode">
-              <input v-model="vcode" placeholder="输入了6位手机号验证码"></input>
-              <a href="">获取短信验证码</a>
+              <input v-model="registerParams.vcode" placeholder="输入了6位手机号验证码"/>
+              <a @click="getVCode">获取短信验证码</a>
             </div>
           </div>
           <div class="set-password">
-            <input v-model="setPassword" placeholder="设置密码"></input>
+            <input v-model="setPassword" placeholder="设置密码"/>
           </div>
           <div class="confirm-password">
-            <input v-model="confirmPassword" placeholder="请确认密码"></input>
+            <input v-model="confirmPassword" placeholder="请确认密码"/>
           </div>
           <div class="modal-login-button">
-            <a-button @click="login" block style="background-color: coral; color: white;font-weight: bold">登录</a-button>
+            <a-button @click="userRegister" block style="background-color: coral; color: white;font-weight: bold">注册</a-button>
           </div>
           <div class="modal-register">
             <span>没有帐号?</span><a @click="gotoLogin">登录</a>
@@ -252,7 +252,10 @@
 </template>
 
 <script>
-export default {
+  import { login,register } from "../../api/user";
+  import { getVcode } from "../../api/common";
+
+  export default {
   name: 'BannerBw',
   props: {
     type: String
@@ -269,8 +272,15 @@ export default {
       confirmLoading: false,
       phoneNumber: undefined,
       vcode:undefined,
-      phoneNumberOrMail: undefined,
-      password: undefined,
+      loginParams: {
+        phoneNumberOrMail: undefined,
+        password: undefined,
+      },
+      registerParams: {
+        mobile: undefined,
+        vcode: undefined,
+        password: undefined
+      },
       setPassword: undefined,
       confirmPassword: undefined
     }
@@ -300,12 +310,57 @@ export default {
       this.accountLoginVisible = false;
       this.accountRegister = true;
     },
-    login () {
+    userLogin () {
+      const self = this;
+      login(self.loginParams)
+        .then(resp => {
+          if (resp && resp.success) {
+            self.$message.success('登录成功');
+          } else {
+            console.log(resp);
+            self.$message.error(resp.msg);
+          }
+        });
       this.accountLoginVisible = false
     },
-    confirmResetPwd () {
+    userRegister () {
       const self = this;
+      console.log(self.setPassword, self.confirmPassword);
+      if (self.setPassword !== self.confirmPassword) {
+        this.$message.error("两次密码输入不一致，请重新输入！");
+        self.setPassword = undefined;
+        self.confirmPassword = undefined;
+      } else {
+        self.registerParams.password = self.setPassword;
+        console.log(self.registerParams);
+        register(self.registerParams)
+          .then(resp => {
+            if (resp && resp.success) {
+              self.$message.success("注册成功！");
+            } else {
+              self.$message.error("注册失败！", resp.msg);
+            }
+          });
+      }
     },
+    getVCode() {
+      const self = this;
+      let getVcodeParams = {
+        mobile: self.registerParams.mobile
+      };
+      getVcode(getVcodeParams)
+        .then(resp => {
+          if (resp && resp.success) {
+            console.log(resp);
+            self.$message.success("获取验证码成功！为0000");
+          } else {
+            self.$message.error("获取验证码失败！");
+          }
+        });
+    },
+    // confirmResetPwd () {
+    //   const self = this;
+    // },
     handleCancel () {
       this.accountLoginVisible = false;
       this.accountPhoneLoginVisible = false;

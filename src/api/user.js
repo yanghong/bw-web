@@ -1,8 +1,8 @@
 import * as url from './urlConfig'
 import axios from 'axios'
 
-export function register(){
-    return axios.get(url.register).then((response) => {
+export function register(params){
+    return axios.get(url.register, {params}).then((response) => {
       return response.data
     })
 };
