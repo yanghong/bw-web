@@ -10,40 +10,10 @@
             <div class="carousel-img"><img src="../../assets/images/msite/background.jpg" alt="background"></div>
             <div class="carousel-img"><img src="../../assets/images/msite/background.jpg" alt="background"></div>
           </a-carousel>
-        </div>
+      </div>
         <div class="nav">
-          <div class="nav-a">
-            <a href="">时下热门</a>
-          </div>
-          <div class="nav-a">
-            <a href="">潮玩</a>
-          </div>
-          <div class="nav-a">
-            <a href="">可动人偶</a>
-          </div>
-          <div class="nav-a">
-            <a href="">机甲</a>
-          </div>
-          <div class="nav-a">
-            <a href="">积木/拼图</a>
-          </div>
-          <div class="nav-a">
-            <a href="">电动航模</a>
-          </div>
-          <div class="nav-a">
-            <a href="">军事模型</a>
-          </div>
-          <div class="nav-a">
-            <a href="">手办/景品</a>
-          </div>
-          <div class="nav-a">
-            <a href="">盒玩/食玩</a>
-          </div>
-          <div class="nav-a">
-            <a href="">雕像</a>
-          </div>
-          <div class="nav-a">
-            <a href="">...</a>
+          <div class="nav-a" v-for="item in msiteCategorys">
+            <a href="">{{item}}</a>
           </div>
         </div>
         <a-divider style="margin-top: 0px; margin-bottom: 0px;"/>
@@ -84,6 +54,8 @@
 import BannerBw from '../../components/Banner/BannerBw.vue'
 import SingleVideo from '../../components/singleVideo/singleVideo.vue'
 import FooterGuide from '../../components/FooterGuide/FooterGuide.vue'
+import { userChangePwd } from '../../api/user'
+import { getCategotys } from '../../api/msite'
 export default {
   name: 'MSite',
   components: {
@@ -94,7 +66,37 @@ export default {
   data() {
     return {
       selectedTitle: '潮玩',// TODO 链接nav的选择项
+      msiteCategorys: undefined
     }
+  },
+  methods: {
+    test() {
+      userChangePwd()
+        .then(resp => {
+          if (resp && resp.success) {
+            console.log(resp);
+          }
+        });
+    },
+    /**
+     * 获取导航类目
+     */
+    getCategorysMsite() {
+      const self = this;
+      getCategotys()
+        .then(resp => {
+          if (resp && resp.success) {
+            let tempArray = new Array();
+            resp.data.forEach(item => {
+              tempArray.push(item.category);
+            });
+            self.msiteCategorys = tempArray;
+          }
+        });
+    }
+  },
+  created() {
+    this.getCategorysMsite();
   }
 }
 </script>
@@ -128,13 +130,13 @@ export default {
     width 82px
     height 20px
     font-family MicrosoftYaHei
-    font-size 20.8px
+    font-size 13px
     font-weight normal
     font-stretch normal
     letter-spacing 0px
     color #000000
-    margin-left 10px
-    margin-right 10px
+    margin-left 8px
+    margin-right 8px
     &:hover
       color coral
   .suggest-video >>> .a-row > div

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import config from '../../config';
+import config from '../config';
 import { removeToken } from '../utils/auth';
 import router from '../router';
 
@@ -21,24 +21,15 @@ service.interceptors.request.use(config => {
 // response拦截器
 service.interceptors.response.use(
   response => {
-    /**
-     * code为非1003是抛错
-     */
     const res = response.data;
-    // if (res.code === 1003) {   // TODO
-    //   removeToken();
-    //   // 重定向到SSO登录页面
-    //   window.location.href = config.sso.ssoUrl;
-    // } else if (res.code === 1004) {
-    //   removeToken();
-    //   // code为1004的时候表示是外部系统登录  TODO delete
-    //   router.push({ path: '/supplier/login' });
-    // } else if (!res.success) {
-    //   this.$message.error(res.errMsg ? res.errMsg : res.message);
-    //   return Promise.reject();
-    // } else {
-    //   return res;
-    // }
+    if (res.code !== 200) {
+      this.$message.error(res.errMsg ? res.errMsg : res.message);
+    } else if (!res.success) {
+      this.$message.error(res.errMsg ? res.errMsg : res.message);
+      return Promise.reject();
+    } else {
+      return res;
+    }
   },
   error => {
     this.$message.error(error.message);

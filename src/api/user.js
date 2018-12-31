@@ -7,4 +7,4 @@ export const userChangePwd = {
       return response.data
     })
   }
-}
+};

@@ -11,10 +11,63 @@
         <a-input-search class="search" placeholder="input search text" style="width: 200px" @search="onSearch"/>
       </div>
       <div class="login-avatar">
-        <a-popover title="Title">
-          <template slot="content">exchange
-            <p>Content</p>
-            <p>Content</p>
+        <a-popover>
+          <template slot="content">
+            <div class="popover-container">
+              <div class="popover-name-lv">
+                <div class="popover-name">
+                  <span>钓鱼的彩虹糖</span>
+                </div>
+                <div class="popover-lv">
+                  <span>lv3</span>
+                </div>
+              </div>
+              <div class="popover-tag">
+                <img src="../../assets/images/banner/popover-tag-img.png" alt="tag-img">
+              </div>
+              <div class="popover-changing">
+                <div class="popover-battery-number">
+                  <img src="../../assets/images/banner/popover-battery-number.png" alt="battery-number">
+                  <span>199</span>
+                </div>
+                <div class="popover-changed-number">
+                  <img src="../../assets/images/banner/popover-changed-number.png" alt="changed-number">
+                  <span>287</span>
+                </div>
+              </div>
+              <div class="popover-web-info">
+                <div class="popover-my-message">
+                  <img src="../../assets/images/banner/popover-my-message.png" alt="my-message">
+                  <a href="">我的消息</a>
+                </div>
+                <div class="popover-my-collection">
+                  <img src="../../assets/images/banner/popover-collect.png" alt="collect">
+                  <a href="">我的收藏</a>
+                </div>
+                <div class="popover-concerns">
+                  <img src="../../assets/images/banner/popover-concern.png" alt="concern">
+                  <a href="">关注动态</a>
+                </div>
+                <div class="popover-tag-manage">
+                  <img src="../../assets/images/banner/popover-tag.png" alt="tag">
+                  <a href="">厂牌管理</a>
+                </div>
+                <div class="popover-vote-manage">
+                  <img src="../../assets/images/banner/popover-vote-manage.png" alt="vote-manage">
+                  <a href="">投稿管理</a>
+                </div>
+              </div>
+              <div class="popover-footer">
+                <div class="popover-footer-phone">
+                  <img src="../../assets/images/banner/popover-phone.png" alt="phone">
+                  <img src="../../assets/images/banner/popover-mail.png" alt="mail">
+                  <img src="../../assets/images/banner/popover-mail-message.png" alt="mail-message">
+                </div>
+                <div class="popover-footer-logout">
+                  <a href="">退出登录</a>
+                </div>
+              </div>
+            </div>
           </template>
           <!--<a-icon type="user" />-->
           <div v-if="userStatus === 0" @click="showModal">
@@ -199,7 +252,6 @@
 </template>
 
 <script>
-// import { userChangePwd } from '../../api/userFetch.js'
 export default {
   name: 'BannerBw',
   props: {
@@ -253,8 +305,6 @@ export default {
     },
     confirmResetPwd () {
       const self = this;
-      console.log(self.setPassword);
-      console.log(self.confirmPassword);
     },
     handleCancel () {
       this.accountLoginVisible = false;
@@ -263,12 +313,8 @@ export default {
       this.accountResetPwdSuccess = false;
       this.accountRegister = false;
     },
-    // userChangePassword() {
-    //   const self = this;
-    //   userChangePwd()
-    //     .then({
-    //     });
-    // }
+  },
+  created() {
   }
 }
 </script>
@@ -428,4 +474,69 @@ export default {
     -webkit-appearance none
     -moz-appearance none
     border none
+  .popover-container
+    width 200px
+    height 250px
+    display flex
+    display -webkit-flex
+    flex-direction column
+    justify-content center
+  .popover-name-lv
+    width 100%
+    margin 0 auto
+    display flex
+    display -webkit-flex
+    flex-direction row
+    justify-content center
+  .popover-tag
+    width 50px
+    margin 0 auto
+  .popover-changing
+    width 100%
+    margin 5px 10px
+    display flex
+    display -webkit-flex
+    flex-direction row
+    justify-content center
+  .popover-web-info
+    width 100%
+    margin-top 10px
+    margin-bottom 20px
+    position relative
+  .popover-web-info .popover-my-message
+    position absolute
+    top 0px
+    left 5px
+  .popover-web-info .popover-my-message a
+    color gray
+  .popover-web-info .popover-my-collection
+    position absolute
+    top 0px
+    right 5px
+  .popover-web-info .popover-my-collection a
+    color gray
+  .popover-web-info .popover-concerns
+    position absolute
+    top 25px
+    left 5px
+  .popover-web-info .popover-concerns a
+    color gray
+  .popover-web-info .popover-tag-manage
+    position absolute
+    top 25px
+    right 5px
+  .popover-web-info .popover-tag-manage a
+    color gray
+  .popover-web-info .popover-vote-manage
+    position absolute
+    top 50px
+    left 5px
+  .popover-web-info .popover-vote-manage a
+    color gray
+  .popover-footer
+    width 100%
+    margin-top 100px
+    display flex
+    display -webkit-flex
+    flex-direction row
 </style>

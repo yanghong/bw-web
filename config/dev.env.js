@@ -4,5 +4,5 @@ const prodEnv = require('./prod.env')
 
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
-  // BASE_API: '"http://sop-platform.husor.com/api"'
+  BASE_API: '"http://39.104.108.81:9080/bw"'
 })
