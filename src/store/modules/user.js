@@ -1,7 +1,7 @@
-import { getUserInfo, doLogin } from '@/api/login';
+import { getUserInfo, login } from '../../api/user';
 import Cookies from 'js-cookie';
-import ls from '@/utils/localStorage';
-import { getToken, setToken, removeToken } from '@/utils/auth';
+import ls from '../../utils/localStorage';
+import { getToken, setToken, removeToken } from '../../utils/auth';
 
 const expireTime = {
   expires: 60 * 60 * 12
@@ -12,7 +12,7 @@ const user = {
     name: ls.getItem('name'),
     ssoUid: ls.getItem('ssoUid'),
     account: ls.getItem('account'),
-    avatar: 'http://os8icxjl9.bkt.clouddn.com/17-11-20/8493709.jpg',
+    avatar: ls.getItem('avatar_url'),
     token: getToken(),
     roles: []
   },
@@ -36,7 +36,7 @@ const user = {
     },
     Login({ commit }, params) {
       return new Promise((resolve) => {
-        doLogin(params)
+        login(params)
           .then(resp => {
             if (resp && resp.success) {
               commit('SET_TOKEN', resp.data.token);

@@ -32,6 +32,12 @@ export const login = serverRoot + '/web/user/login';
 export const checkUnique = serverRoot + '/web/user/checkUnique';
 
 /**
+ * 通过id获取用户信息
+ * @type {string}
+ */
+export const getById = serverRoot + '/web/user/getById';
+
+/**
  * 取消关注其他用户
  * @type {string}
  */
@@ -147,7 +153,7 @@ export const checkMailAndVcode = serverRoot + '/common/checkMailAndVcode';
 /**
  * 上传图片视频接口
  */
-export const upload = serverRoot + '/common/upload';
+export const uploadUrl = serverRoot + '/common/upload';
 
 /**
 * 获取手机验证码

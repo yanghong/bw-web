@@ -1,17 +1,27 @@
 <template>
   <div class="show-detail-container">
-    <div class="show-detail-header">
-      <BannerBw></BannerBw>
-    </div>
+    <BannerBw></BannerBw>
     <div class="show-detail-layout">
       <div class="show-detail-main-content">
-        <a-row class="show-detail-video-introduction">
-          <a-col :span="6">{{videoName}}</a-col>
-          <a-col :span="6">{{videoTime}}</a-col>
-          <a-col :span="6">{{introduction}}</a-col>
-          <a-col :span="6"><button>展开</button></a-col>
-        </a-row>
-        <div class="show-detail-video_list">
+        <div class="show-detail-video-info">
+          <div class="show-detail-video-name-time">
+            <div class="show-detail-video-name">
+              <span>{{videoName}}</span>
+            </div>
+            <div class="show-detail-video-time">
+              <span>{{videoTime}}</span>
+            </div>
+          </div>
+          <div class="show-detail-video-introduction">
+            <div class="show-detail-video-introduction-text">
+              <span>{{introduction}}</span>
+            </div>
+            <div class="show-detail-video-introduction-button">
+              <button>展开∨</button>
+            </div>
+          </div>
+        </div>
+        <div class="show-detail-video-list">
           <div class="show-detail-video_ls clear"  ref="videoLs">
             <div class="show-detail-video_shows" v-for="(item,index) in srclist">
               <div v-if="item.imsrc" class="show-detail-div_videos" >
@@ -209,35 +219,39 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  .show-detail-container
-    width 75%
-    margin 0 auto
-  .show-detail-header
-    width 100%
-    margin 0 auto
   .show-detail-layout
-    width 100%
+    width 70%
+    margin 0 auto
+    display flex
+    display -webkit-flex
+    flex-direction row
   .show-detail-main-content
-    width 100%
-    padding 10px
-  .show-detail-video-introduction
-    width 100%
-    height 70px
-    background-color white
-    margin 0 auto
-  .show-detail-video_list
-    width 100%
-    height 555px
-    margin 0 auto
-  .show-detail-videoRelate
-    width 100%
-    height 100px
-    margin 0 auto
+    width 70%
+    margin 10px 10px
+    display flex
+    display -webkit-flex
+    flex-direction column
   .show-detail-main-sider
     width 30%
-    position fixed
-    background-color red
-    margin-right 40px
-  .show-detail-user-about
-    height 290px
+    margin 10px 10px
+    display flex
+    display -webkit-flex
+    flex-direction column
+  .show-detail-video-info
+    width 70%
+    margin 10px 10px
+    display flex
+    display -webkit-flex
+    flex-direction column
+  .show-detail-video-name-time
+    display flex
+    display -webkit-flex
+    flex-direction row
+  .show-detail-video-introduction
+    display flex
+    display -webkit-flex
+    flex-direction row
+  .show-detail-video-list
+    width 100%
+    /*height 544px*/
 </style>

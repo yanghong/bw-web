@@ -28,21 +28,21 @@
             <a-select-option value="Yiminghe">yiminghe</a-select-option>
           </a-select>
         </div>
-        <div class="show-publish-cover">
-          <div class="show-publish-cover-name">
-            <span>封面</span><span class="star">*</span>
-          </div>
-          <div classs="show-publish-cover-input">
-            <a-upload name="avatar" listType="picture-card" class="avatar-uploader" :showUploadList="false" action="//jsonplaceholder.typicode.com/posts/" :beforeUpload="beforeUpload" @change="handleChangeUpload">
-              <img v-if="imageUrl" :src="imageUrl" alt="avatar" />
-              <div v-else>
-                <a-icon :type="loading ? 'loading' : 'plus'" />
-                <div class="ant-upload-text">Upload</div>
-              </div>
-            </a-upload>
-            <span>支持≤3M，JPG、JPEG、PNG格式文件</span>
-          </div>
-        </div>
+        <!--<div class="show-publish-cover">-->
+          <!--<div class="show-publish-cover-name">-->
+            <!--<span>封面</span><span class="star">*</span>-->
+          <!--</div>-->
+          <!--<div classs="show-publish-cover-input">-->
+            <!--<a-upload name="avatar" listType="picture-card" class="avatar-uploader" :showUploadList="false" :action="uploadUrl.replace('http:','')" :data="uploadParams" :beforeUpload="beforeUpload" @change="handleChangeUpload">-->
+              <!--<img v-if="imageUrl" :src="imageUrl" alt="avatar" />-->
+              <!--<div v-else>-->
+                <!--<a-icon :type="loading ? 'loading' : 'plus'" />-->
+                <!--<div class="ant-upload-text">Upload</div>-->
+              <!--</div>-->
+            <!--</a-upload>-->
+            <!--<span>支持≤3M，JPG、JPEG、PNG格式文件</span>-->
+          <!--</div>-->
+        <!--</div>-->
         <div class="show-publish-intro">
           <div class="show-publish-intro-name">
             <span>简介</span>
@@ -65,9 +65,16 @@
 </template>
 
 <script>
+  function getBase64 (img, callback) {
+    const reader = new FileReader()
+    reader.addEventListener('load', () => callback(reader.result))
+    reader.readAsDataURL(img)
+  }
   import BannerBw from '../../components/Banner/BannerBw.vue'
   import FooterGuide from '../../components/FooterGuide/FooterGuide'
   import { upload } from '../../api/common'
+  import { uploadUrl } from '../../api/urlConfig'
+  import Cookies from 'js-cookie'
   export default {
     name: 'ShowPublish',
     components: {
@@ -77,7 +84,13 @@
     data () {
       return {
         imageUrl: '',
-        loading: false
+        loading: false,
+        uploadUrl: uploadUrl,
+        uploadParams: {
+          uid: '0',
+          description: '',
+          file: ''
+        }
       }
     },
     methods: {
@@ -85,6 +98,7 @@
         console.log(`selected ${value}`);
       },
       handleChangeUpload (info) {
+        console.log(info);
         if (info.file.status === 'uploading') {
           this.loading = true
           return
@@ -98,15 +112,19 @@
         }
       },
       beforeUpload (file) {
-        const isJPG = file.type === 'image/jpeg'
-        if (!isJPG) {
-          this.$message.error('You can only upload JPG file!')
-        }
-        const isLt2M = file.size / 1024 / 1024 < 2
-        if (!isLt2M) {
-          this.$message.error('Image must smaller than 2MB!')
-        }
-        return isJPG && isLt2M
+        const self = this;
+        self.uploadParams.uid = Cookies.get('id');
+        self.uploadParams.description = 'video';
+        self.uploadParams.file = file;
+        // const isJPG = file.type === 'image/jpeg'
+        // if (!isJPG) {
+        //   this.$message.error('You can only upload JPG file!')
+        // }
+        // const isLt2M = file.size / 1024 / 1024 < 2
+        // if (!isLt2M) {
+        //   this.$message.error('Image must smaller than 2MB!')
+        // }
+        // return isJPG && isLt2M
       },
       uploagVideo() {
         const self = this;
@@ -123,8 +141,12 @@
   .show-publish-background-img
     width 75%
     margin 0 auto
+  .show-publish-background-img img
+    width 1100px
+    margin-left 30px
+    margin-top 10px
   .show-publish-content
-    width 75%
+    width 70%
     margin 0 auto
     display flex
     display -webkit-flex

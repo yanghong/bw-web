@@ -64,7 +64,7 @@ export default new Router({
       component: Protocol
     },
     {
-      path: '/search-result',
+      path: '/search-result/:value',
       name: 'searchResult',
       component: SearchResult
     },
@@ -102,6 +102,7 @@ export default new Router({
       path: '/submit-video',
       name: 'submitVideo',
       component: SubmitVideo
-    }
+    },
+    { path: '*', redirect: '/404', hidden: true }
   ]
 })

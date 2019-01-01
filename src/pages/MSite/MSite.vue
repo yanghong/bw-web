@@ -37,7 +37,9 @@
           </div>
         </div>
         <div class="msite-video-list" v-for="item in videoList">
-          <SingleVideo v-bind:video="item"></SingleVideo>
+          <SingleVideo  v-bind:view-count="item.viewCount" v-bind:like-count="item.likeCount"
+                        v-bind:cover-url="item.coverUrl" v-bind:introduction="item.introduction"
+                        v-bind:title="item.title" v-bind:video="item" v-bind:selectEntities="item.selectEntities"></SingleVideo>
         </div>
       </div>
       <div class="msite-footer">
@@ -118,7 +120,6 @@ export default {
     },
     getNavItemList(item) {
       const self =  this;
-      console.log(item.id);
       let params = {
         category: item.id,
         search: '',

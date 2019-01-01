@@ -49,7 +49,7 @@
       <a-divider style="margin-top: 0px; margin-bottom: 0px;"/>
       <div class="profile-content-main">
         <div class="profile-sideBar">
-          <a-menu @click="handleClick" :defaultSelectedKeys="['1']" :defaultOpenKeys="['sub1']" mode="inline" style="width: 175px">
+          <a-menu @click="handleClick" :defaultSelectedKeys="['10']" :defaultOpenKeys="['10']" mode="inline" style="width: 175px">
             <a-menu-item key="1">
               <span>我的信息</span><img src="../../assets/images/profile/profile-my-info.png" alt="info">
             </a-menu-item>
@@ -83,6 +83,40 @@
           </a-menu>
         </div>
         <div class="profile-content-right">
+
+          <div class="profile-my-history" v-if="sideBarKey === 10">
+            <div class="profile-my-history-time">
+              <a-menu @click="handleHistoryClick" :defaultSelectedKeys="['sub1']" :defaultOpenKeys="['sub1']" mode="inline" style="width: 175px">
+                <a-menu-item key="sub1">
+                  <span>今天</span>
+                </a-menu-item>
+                <a-menu-item key="sub2">
+                  <span>近三天</span>
+                </a-menu-item>
+                <a-menu-item key="sub3">
+                  <span>近一周</span>
+                </a-menu-item>
+              </a-menu>
+            </div>
+            <div class="profile-my-history-list">
+              <div class="profile-my-history-list-sub1" v-if="historyKey === 'sub1'">
+                <span>sub1</span>
+                <!--TODO 填写组件信息,通过传递参数的方式进行传递-->
+                <HistoryItem></HistoryItem>
+              </div>
+              <div class="profile-my-history-list-sub2" v-if="historyKey === 'sub2'">
+                <span>sub2</span>
+                <!--TODO 填写组件信息,通过传递参数的方式进行传递-->
+                <HistoryItem></HistoryItem>
+              </div>
+              <div class="profile-my-history-list-sub3" v-if="historyKey === 'sub3'">
+                <span>sub3</span>
+                <!--TODO 填写组件信息,通过传递参数的方式进行传递-->
+                <HistoryItem></HistoryItem>
+              </div>
+            </div>
+          </div>
+
           <div class="profile-my-info" v-if="sideBarKey === 1">
             <img src="../../assets/images/otherPerson/avatar.png" alt="avatar">
             <span>钓鱼的彩虹糖</span>
@@ -254,38 +288,6 @@
             <MyExchange></MyExchange>
           </div>
 
-          <div class="profile-my-history" v-if="sideBarKey === 10">
-            <div class="profile-my-history-time">
-              <a-menu @click="handleHistoryClick" :defaultSelectedKeys="['sub1']" :defaultOpenKeys="['sub1']" mode="inline" style="width: 175px">
-                <a-menu-item key="sub1">
-                  <span>今天</span>
-                </a-menu-item>
-                <a-menu-item key="sub2">
-                  <span>近三天</span>
-                </a-menu-item>
-                <a-menu-item key="sub3">
-                  <span>近一周</span>
-                </a-menu-item>
-              </a-menu>
-            </div>
-            <div class="profile-my-history-list">
-              <div class="profile-my-history-list-sub1" v-if="historyKey === 'sub1'">
-                <span>sub1</span>
-                <!--TODO 填写组件信息,通过传递参数的方式进行传递-->
-                <HistoryItem></HistoryItem>
-              </div>
-              <div class="profile-my-history-list-sub2" v-if="historyKey === 'sub2'">
-                <span>sub2</span>
-                <!--TODO 填写组件信息,通过传递参数的方式进行传递-->
-                <HistoryItem></HistoryItem>
-              </div>
-              <div class="profile-my-history-list-sub3" v-if="historyKey === 'sub3'">
-                <span>sub3</span>
-                <!--TODO 填写组件信息,通过传递参数的方式进行传递-->
-                <HistoryItem></HistoryItem>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -423,13 +425,16 @@
     flex-direction row
   .profile-nav-uid-time .nav-uid-time-nav
     width 920px
-    margin-top 20px
+    margin-top 5px
     display flex
     display -webkit-flex
     flex-direction row
+  .profile-personal-center
+    margin-top 5px
   .profile-nav-uid-time .nav-uid-time-nav a
     margin-left 5px
     margin-right 5px
+    color red
   .profile-fans-number
     display flex
     display -webkit-flex

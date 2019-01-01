@@ -94,7 +94,7 @@
         </a-popover>
       </div>
       <div class="foot-trace">
-        <a href="" style="color:black">足迹</a>
+        <router-link :to="{ name:'profile'}"><a style="color:black">足迹</a></router-link>
       </div>
       <div class="banner-contribute">
         <!--<div>-->
@@ -146,7 +146,7 @@
             <span>帐号登录</span>
           </div>
           <div class="input-number">
-            <input v-model="loginParams.phoneNumberOrMail" placeholder="手机号或邮箱"/>
+            <input v-model="loginParams.mobile" placeholder="手机号或邮箱"/>
           </div>
           <div class="input-vcode">
             <div class="get-vcode">
@@ -261,9 +261,10 @@
 </template>
 
 <script>
-  import { login,register,changePwd } from "../../api/user";
+  import { login,register,changePwd,getUserInfo } from "../../api/user";
   import { getVcode } from "../../api/common";
-
+  import { getVideoListByCategoryOrSearch } from '../../api/video'
+  import Cookies from 'js-cookie';
   export default {
   name: 'BannerBw',
   props: {
@@ -280,9 +281,12 @@
       ModalText: 'Content of the modal',
       confirmLoading: false,
       phoneNumber: undefined,
+      userId: undefined,
+      user: undefined,
       vcode:undefined,
       loginParams: {
-        phoneNumberOrMail: undefined,
+        mobile: undefined,
+        email: undefined,
         password: undefined,
       },
       phoneLoginParams: {
@@ -305,7 +309,14 @@
   },
   methods: {
     onSearch (value) {
-      console.log(value)
+      const self = this;
+      let params = {
+        category: '',
+        search: value,
+        pageSize: 10,
+        pageNo: 1
+      };
+      this.$router.push({ name: 'searchResult', params: { value: value }});
     },
     showModal () {
       this.accountLoginVisible = true
@@ -330,11 +341,16 @@
     },
     userLogin () {
       const self = this;
+      self.loginParams.email = '';
       login(self.loginParams)
         .then(resp => {
           if (resp && resp.success) {
             self.$message.success('登录成功');
+            Cookies.set('id',resp.data.user.id, { expires: 7});
+            Cookies.set('BW_Token',resp.data.BW_Token, { expires: 7});
+            Cookies.set('BW_U',resp.data.BW_U, { expires: 7});
           } else {
+            Cookies.set(id,'worry', { expires: 7});
             self.$message.error(resp.msg);
           }
         });
@@ -342,16 +358,32 @@
       this.accountLoginVisible = false;
       this.accountPhoneLoginVisible = false;
     },
+    judgeUserStatus() {
+      const self = this;
+      self.userId = Cookies.get('id');
+      let getUserParam = {
+        id: self.userId
+      };
+      if (self.userId) {
+        getUserInfo(getUserParam)
+          .then(resp => {
+            if (resp && resp.success) {
+              console.log(resp.data);
+              self.user = resp.data;
+            } else {
+              self.$message.error("获取用户信息失败！", resp.msg);
+            }
+          });
+      }
+    },
     userRegister () {
       const self = this;
-      console.log(self.setPassword, self.confirmPassword);
       if (self.setPassword !== self.confirmPassword) {
         this.$message.error("两次密码输入不一致，请重新输入！");
         self.setPassword = undefined;
         self.confirmPassword = undefined;
       } else {
         self.registerParams.password = self.setPassword;
-        console.log(self.registerParams);
         register(self.registerParams)
           .then(resp => {
             if (resp && resp.success) {
@@ -431,6 +463,7 @@
     },
   },
   created() {
+    this.judgeUserStatus();
   }
 }
 </script>

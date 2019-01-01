@@ -56,7 +56,7 @@ export function getFansList(params){
 };
 
 export function getUserInfo(params){
-  return axios.get(url.getFansList, {params}).then((response) => {
+  return axios.get(url.getById, {params}).then((response) => {
     return response.data
   })
 };

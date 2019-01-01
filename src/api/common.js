@@ -20,7 +20,7 @@ export function checkMailAndVcode(params) {
 };
 
 export function upload(params) {
-  return axios.post(url.upload, {params}).then((response) => {
+  return axios.post(url.uploadUrl, {params}).then((response) => {
     return response.data
   })
 };
