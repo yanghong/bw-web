@@ -6,3 +6,10 @@ export function getCategotys() {
       return response.data
     })
 };
+
+export function getCarouselList() {
+  return axios.get(url.getCarouselList).then((response) => {
+    return response.data
+  })
+};
+

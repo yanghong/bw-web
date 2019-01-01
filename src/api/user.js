@@ -7,20 +7,50 @@ export function register(params){
     })
 };
 
-export function saveChange(){
-  return axios.get(url.saveChange).then((response) => {
+export function saveChange(params){
+  return axios.get(url.saveChange, {params}).then((response) => {
     return response.data
   })
 };
 
-export function changePwd(){
-  return axios.get(url.changePwd).then((response) => {
+export function changePwd(params){
+  return axios.get(url.changePwd, {params}).then((response) => {
     return response.data
   })
 };
 
-export function login(){
-  return axios.get(url.login).then((response) => {
+export function login(params){
+  return axios.get(url.login, {params}).then((response) => {
+    return response.data
+  })
+};
+
+export function checkUnique(params){
+  return axios.get(url.checkUnique, {params}).then((response) => {
+    return response.data
+  })
+};
+
+export function cancelFollow(params){
+  return axios.get(url.cancelFollow, {params}).then((response) => {
+    return response.data
+  })
+};
+
+export function follow(params){
+  return axios.get(url.follow, {params}).then((response) => {
+    return response.data
+  })
+};
+
+export function getFollowersList(params){
+  return axios.get(url.getFollowersList, {params}).then((response) => {
+    return response.data
+  })
+};
+
+export function getFansList(params){
+  return axios.get(url.getFansList, {params}).then((response) => {
     return response.data
   })
 };

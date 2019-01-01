@@ -1,26 +1,26 @@
 import axios from 'axios'
 import * as url from "./urlConfig";
 
-export function checkVcode() {
-  return axios.get(url.checkVcode).then((response) => {
+export function checkVcode(params) {
+  return axios.get(url.checkVcode, {params}).then((response) => {
     return response.data
   })
 };
 
-export function sendMailVcode() {
-  return axios.get(url.sendMailVcode).then((response) => {
+export function sendMailVcode(params) {
+  return axios.get(url.sendMailVcode, {params}).then((response) => {
     return response.data
   })
 };
 
-export function checkMailAndVcode() {
-  return axios.get(url.checkMailAndVcode).then((response) => {
+export function checkMailAndVcode(params) {
+  return axios.get(url.checkMailAndVcode, {params}).then((response) => {
     return response.data
   })
 };
 
-export function upload() {
-  return axios.get(url.upload).then((response) => {
+export function upload(params) {
+  return axios.get(url.upload, {params}).then((response) => {
     return response.data
   })
 };

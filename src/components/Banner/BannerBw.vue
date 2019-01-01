@@ -4,11 +4,20 @@
       <div class="logo">
         <img src="../../assets/images/banner/logo.jpg" alt="logo">
       </div>
-      <div class="banner-home"><img class="banner-home-img" src="../../assets/images/banner/msite-home.png" alt="msite-home"><router-link :to="{ name: 'msite'}">主站</router-link></div>
-      <div class="banner-show"><img src="../../assets/images/banner/msite-show.png" alt="show"><router-link :to="{ name: 'show'}">展柜</router-link></div>
-      <div class="banner-exchange"><img src="../../assets/images/banner/msite-exchange.png" alt="exchange"><router-link :to="{ name: 'exchange'}">兑换</router-link></div>
+      <div class="banner-home">
+        <img class="banner-home-img" src="../../assets/images/banner/msite-home.png" alt="msite-home">
+        <router-link :to="{ name: 'msite'}">主站</router-link>
+      </div>
+      <div class="banner-show">
+        <img src="../../assets/images/banner/msite-show.png" alt="show">
+        <router-link :to="{ name: 'show'}">展柜</router-link>
+      </div>
+      <div class="banner-exchange">
+        <img src="../../assets/images/banner/msite-exchange.png" alt="exchange">
+        <router-link :to="{ name: 'exchange'}">兑换</router-link>
+      </div>
       <div class="banner-search">
-        <a-input-search class="search" placeholder="input search text" style="width: 200px" @search="onSearch"/>
+        <a-input-search class="search" style="width: 200px" @search="onSearch"/>
       </div>
       <div class="login-avatar">
         <a-popover>
@@ -85,7 +94,7 @@
         </a-popover>
       </div>
       <div class="foot-trace">
-        <a href="">足迹</a>
+        <a href="" style="color:black">足迹</a>
       </div>
       <div class="banner-contribute">
         <!--<div>-->
@@ -110,12 +119,12 @@
             <span>帐号登录</span>
           </div>
           <div class="input-number">
-            <input v-model="phoneNumber" placeholder="请输入11位手机号"/>
+            <input v-model="phoneLoginParams.mobile" placeholder="请输入11位手机号"/>
           </div>
           <div class="input-vcode">
             <div class="get-vcode">
-              <input v-model="vcode" placeholder="输入了6位手机号验证码"/>
-              <a href="">获取短信验证码</a>
+              <input v-model="phoneLoginParams.vcode" placeholder="输入了6位手机号验证码"/>
+              <a @click="getVCode">获取短信验证码</a>
             </div>
             <a @click="gotoLogin">帐号密码登录</a>
           </div>
@@ -166,12 +175,12 @@
             <span>密码重置</span>
           </div>
           <div class="input-number">
-            <input v-model="phoneNumber" placeholder="请输入11位手机号"/>
+            <input v-model="resetPwdParams.mobile" placeholder="请输入11位手机号"/>
           </div>
           <div class="reset-pwd-input-vcode">
             <div class="reset-pwd-get-vcode">
-              <input v-model="vcode" placeholder="输入了6位手机号验证码"/>
-              <a href="">获取短信验证码</a>
+              <input v-model="resetPwdParams.vcode" placeholder="输入了6位手机号验证码"/>
+              <a @click="getVCode">获取短信验证码</a>
             </div>
           </div>
           <div class="set-password">
@@ -203,7 +212,7 @@
           <div class="input-vcode">
             <div class="get-vcode">
               <input v-model="vcode" placeholder="输入了6位手机号验证码"/>
-              <a href="">获取短信验证码</a>
+              <a @click="getVCode">获取短信验证码</a>
             </div>
             <a @click="gotoLogin">帐号密码登录</a>
           </div>
@@ -252,7 +261,7 @@
 </template>
 
 <script>
-  import { login,register } from "../../api/user";
+  import { login,register,changePwd } from "../../api/user";
   import { getVcode } from "../../api/common";
 
   export default {
@@ -275,6 +284,15 @@
       loginParams: {
         phoneNumberOrMail: undefined,
         password: undefined,
+      },
+      phoneLoginParams: {
+        mobile: undefined,
+        vcode: undefined,
+      },
+      resetPwdParams: {
+        mobile: undefined,
+        vcode: undefined,
+        password: undefined
       },
       registerParams: {
         mobile: undefined,
@@ -317,11 +335,12 @@
           if (resp && resp.success) {
             self.$message.success('登录成功');
           } else {
-            console.log(resp);
             self.$message.error(resp.msg);
           }
         });
-      this.accountLoginVisible = false
+      this.resetPhoneLoginParams();
+      this.accountLoginVisible = false;
+      this.accountPhoneLoginVisible = false;
     },
     userRegister () {
       const self = this;
@@ -337,17 +356,38 @@
           .then(resp => {
             if (resp && resp.success) {
               self.$message.success("注册成功！");
+              self.accountRegister = false;
             } else {
               self.$message.error("注册失败！", resp.msg);
+              self.accountRegister = false;
             }
           });
       }
     },
     getVCode() {
       const self = this;
+      console.log(self.phoneLoginParams);
       let getVcodeParams = {
-        mobile: self.registerParams.mobile
+        mobile: undefined
       };
+      if (typeof(self.phoneLoginParams.mobile) !== 'undefined') {
+        getVcodeParams.mobile = self.phoneLoginParams.mobile;
+      }
+      if (typeof(self.registerParams.mobile) !== 'undefined') {
+        getVcodeParams.mobile = self.registerParams.mobile;
+      }
+      if (typeof(getVcodeParams.mobile) === 'undefined') {
+        self.$message.error("手机号不能为空");
+        this.accountPhoneLoginVisible = false;
+        this.resetPhoneLoginParams();
+        return
+      }
+      if (getVcodeParams.mobile.length !== 11) {
+        self.$message.error("手机号错误");
+        this.accountPhoneLoginVisible = false;
+        this.resetPhoneLoginParams();
+        return
+      }
       getVcode(getVcodeParams)
         .then(resp => {
           if (resp && resp.success) {
@@ -358,9 +398,30 @@
           }
         });
     },
-    // confirmResetPwd () {
-    //   const self = this;
-    // },
+    resetPhoneLoginParams () {
+      this.phoneLoginParams.mobile = undefined;
+      this.phoneLoginParams.vcode = undefined;
+    },
+    confirmResetPwd () {
+      const self = this;
+      if (self.setPassword !== self.confirmPassword) {
+        this.$message.error("两次密码输入不一致，请重新输入！");
+        self.setPassword = undefined;
+        self.confirmPassword = undefined;
+      } else {
+        self.resetPwdParams.password = self.setPassword;
+        changePwd(self.resetPwdParams)
+          .then(resp => {
+            if (resp && resp.success) {
+              self.$message.success("修改密码成功！");
+              self.accountResetPwd = false;
+            } else {
+              self.$message.error("修改密码失败！", resp.msg);
+              self.accountResetPwd = false;
+            }
+          });
+      }
+    },
     handleCancel () {
       this.accountLoginVisible = false;
       this.accountPhoneLoginVisible = false;
@@ -394,6 +455,7 @@
     width 60px
     height 21px
     margin 15px 10px 15px 10px
+  .banner-home img
     &:hover
       background-image url("../../assets/images/banner/msite-home-selected.png")
       background-repeat no-repeat

@@ -54,7 +54,7 @@
 import BannerBw from '../../components/Banner/BannerBw.vue'
 import SingleVideo from '../../components/singleVideo/singleVideo.vue'
 import FooterGuide from '../../components/FooterGuide/FooterGuide.vue'
-import { userChangePwd } from '../../api/user'
+import { changePwd } from '../../api/user'
 import { getCategotys } from '../../api/msite'
 export default {
   name: 'MSite',
