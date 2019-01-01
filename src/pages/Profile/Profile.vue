@@ -51,34 +51,34 @@
         <div class="profile-sideBar">
           <a-menu @click="handleClick" :defaultSelectedKeys="['10']" :defaultOpenKeys="['10']" mode="inline" style="width: 175px">
             <a-menu-item key="1">
-              <span>我的信息</span><img src="../../assets/images/profile/profile-my-info.png" alt="info">
+              <span>我的信息 </span><img src="../../assets/images/profile/profile-my-info.png" alt="info">
             </a-menu-item>
             <a-menu-item key="2">
-              <span>投稿管理</span><img src="../../assets/images/profile/profile-vote-man.png" alt="vote">
+              <span>投稿管理 </span><img src="../../assets/images/profile/profile-vote-man.png" alt="vote">
             </a-menu-item>
             <a-menu-item key="3">
-              <span>我的展柜</span><img src="../../assets/images/profile/profile-my-show.png" alt="show">
+              <span>我的展柜 </span><img src="../../assets/images/profile/profile-my-show.png" alt="show">
             </a-menu-item>
             <a-menu-item key="4">
-              <span>厂牌管理</span><img src="../../assets/images/profile/profile-my-tag.png" alt="tag">
+              <span>厂牌管理 </span><img src="../../assets/images/profile/profile-my-tag.png" alt="tag">
             </a-menu-item>
             <a-menu-item key="5">
-              <span>我的收藏</span><img src="../../assets/images/profile/profile-my-coll.png" alt="collection">
+              <span>我的收藏 </span><img src="../../assets/images/profile/profile-my-coll.png" alt="collection">
             </a-menu-item>
             <a-menu-item key="6">
-              <span>我的消息</span><img src="../../assets/images/profile/profile-my-message.png" alt="message">
+              <span>我的消息 </span><img src="../../assets/images/profile/profile-my-message.png" alt="message">
             </a-menu-item>
             <a-menu-item key="7">
-              <span>关注动态</span><img src="../../assets/images/profile/profile-concern.png" alt="concern">
+              <span>关注动态 </span><img src="../../assets/images/profile/profile-concern.png" alt="concern">
             </a-menu-item>
             <a-menu-item key="8">
-              <span>系统消息</span><img src="../../assets/images/profile/profile-sys-message.png" alt="sys">
+              <span>系统消息 </span><img src="../../assets/images/profile/profile-sys-message.png" alt="sys">
             </a-menu-item>
             <a-menu-item key="9">
-              <span>我的兑换</span><img src="../../assets/images/profile/profile-my-exchange.png" alt="exchange">
+              <span>我的兑换 </span><img src="../../assets/images/profile/profile-my-exchange.png" alt="exchange">
             </a-menu-item>
             <a-menu-item key="10">
-              <span>游览历史</span><img src="../../assets/images/profile/profile-visit.png" alt="visit">
+              <span>游览历史 </span><img src="../../assets/images/profile/profile-visit.png" alt="visit">
             </a-menu-item>
           </a-menu>
         </div>
@@ -118,41 +118,50 @@
           </div>
 
           <div class="profile-my-info" v-if="sideBarKey === 1">
-            <img src="../../assets/images/otherPerson/avatar.png" alt="avatar">
-            <span>钓鱼的彩虹糖</span>
-            <a-icon type="edit" />
-            <!--TODO 等级和进度条-->
-            <span>lv show</span>
-            <div>
-              <a href="">回答摆玩问卷，立即获得10电池奖励！</a>
+            <div class="profile-my-info-img">
+              <img src="../../assets/images/otherPerson/avatar.png" alt="avatar">
             </div>
-            <div>
-              <span>性别</span>
-              <span>男</span>
-              <a-icon type="edit" />
-            </div>
-            <div>
-              <span>所在地</span>
-              <span>浙江省</span>
-              <span>杭州市</span>
-              <span>西湖区</span>
-              <a-icon type="edit" />
-            </div>
-            <div>
-              <span>手机号码</span>
-              <span>177****7310</span>
-              <!--<img src="" alt=""> TODO-->
-              <a href="" style="background-color: dodgerblue;color: white">修改手机></a>
-            </div>
-            <div>
-              <span>邮箱地址</span>
-              <span>021349203@qq.com</span>
-              <!--<img src="" alt=""> TODO-->
-            </div>
-            <div>
-              <span>个性签名</span>
-              <a-textarea placeholder="Basic usage" :rows="4"/>
-              <span>请留空您不想暴露的个人信息，以免造成不必要的隐私泄露。</span>
+            <div class="profile-my-info-text">
+              <div class="profile-my-info-name">
+                <span>钓鱼的彩虹糖</span>
+                <a-icon type="edit" />
+              </div>
+              <div class="profile-my-info-degrade">
+                <!--TODO 等级和进度条-->
+                <span>lv show</span>
+              </div>
+              <div class="profile-my-info-paper">
+                <a href="">回答摆玩问卷，立即获得10电池奖励！</a>
+              </div>
+              <div class="profile-my-info-sex">
+                <span>性别</span>
+                <span>男</span>
+                <a-icon type="edit" />
+              </div>
+              <div class="profile-my-info-location">
+                <span>所在地</span>
+                <span>浙江省</span>
+                <span>杭州市</span>
+                <span>西湖区</span>
+                <a-icon type="edit" />
+              </div>
+              <div class="profile-my-info-phone">
+                <span>手机号码</span>
+                <span>177****7310</span>
+                <!--<img src="" alt=""> TODO-->
+                <a href="" style="background-color: dodgerblue;color: white">修改手机></a>
+              </div>
+              <div class="profile-my-info-email">
+                <span>邮箱地址</span>
+                <span>021349203@qq.com</span>
+                <a href="" style="background-color: dodgerblue;color: white">修改邮箱></a>
+                <!--<img src="" alt=""> TODO-->
+              </div>
+              <div class="profile-my-info-sign">
+                <span>个性签名</span>
+                <a-textarea placeholder="Basic usage" :rows="4"/>
+                <span>请留空您不想暴露的个人信息，以免造成不必要的隐私泄露。</span>
+              </div>
             </div>
           </div>
 
@@ -466,6 +475,26 @@
   .profile-my-history
     width 100%
     height 640px
+    display flex
+    display -webkit-flex
+    flex-direction row
+  .profile-sideBar-img
+    margin-left 5px
+  .profile-my-info
+    width 700px
+    height 700px
+    margin 10px 10px
+    display flex
+    display -webkit-flex
+    flex-direction row
+  .profile-my-text
+    width 500px
+    height 500px
+    display flex
+    display -webkit-flex
+    flex-direction column
+  .profile-my-name
+    width 50px
     display flex
     display -webkit-flex
     flex-direction row

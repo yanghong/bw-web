@@ -56,7 +56,7 @@
         <div class="submit-video-progress-notice">
           <span>请勿上传包含有政治有害、色情挑逗、血腥暴力等违法因素的视频内容。</span>
         </div>
-        <a-progress :percent="50" status="active" />
+        <a-progress :percent="0" status="active" />
         <!--TODO 视频上传插件-->
       </div>
     </div>
@@ -117,9 +117,9 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  .submit-video-background-img
-    width 75%
-    margin 0 auto
+  .submit-video-background-img img
+    width 1020px
+    margin 5px 200px
   .submit-video-content
     width 75%
     margin 0 auto
