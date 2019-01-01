@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import MSite from '../pages/MSite/MSite.vue'
+import MSiteMore from '../pages/MSite/MSiteMore.vue'
 import NotFound from '../pages/404/404.vue'
 import Exchange from '../pages/Exchange/Exchange.vue'
 import OtherPerson from '../pages/OtherPerson/OtherPerson.vue'
@@ -31,6 +32,11 @@ export default new Router({
       path: '/msite',
       name: 'msite',
       component: MSite
+    },
+    {
+      path: '/msite-more',
+      name: 'msiteMore',
+      component: MSiteMore
     },
     {
       path: '/404',

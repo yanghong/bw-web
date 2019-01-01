@@ -5,15 +5,12 @@
       <div id="content">
         <div>
           <a-carousel autoplay class="carousel">
-            <div class="carousel-img"><img src="../../assets/images/msite/background.jpg" alt="background"></div>
-            <div class="carousel-img"><img src="../../assets/images/msite/background.jpg" alt="background"></div>
-            <div class="carousel-img"><img src="../../assets/images/msite/background.jpg" alt="background"></div>
-            <div class="carousel-img"><img src="../../assets/images/msite/background.jpg" alt="background"></div>
+            <div class="carousel-img" v-for="img in carouselImgList"><img :src="img" alt="background"></div>
           </a-carousel>
       </div>
         <div class="nav">
           <div class="nav-a" v-for="item in msiteCategorys">
-            <a href="">{{item}}</a>
+            <a @click="getNavItemList(item)">{{item.category}}</a>
           </div>
         </div>
         <a-divider style="margin-top: 0px; margin-bottom: 0px;"/>
@@ -39,8 +36,8 @@
             <a href="">更多></a>
           </div>
         </div>
-        <div class="video-list">
-          <SingleVideo></SingleVideo>
+        <div class="msite-video-list" v-for="item in videoList">
+          <SingleVideo v-bind:video="item"></SingleVideo>
         </div>
       </div>
       <div class="msite-footer">
@@ -54,8 +51,8 @@
 import BannerBw from '../../components/Banner/BannerBw.vue'
 import SingleVideo from '../../components/singleVideo/singleVideo.vue'
 import FooterGuide from '../../components/FooterGuide/FooterGuide.vue'
-import { changePwd } from '../../api/user'
-import { getCategotys } from '../../api/msite'
+import { getCategotys,getCarouselList } from '../../api/msite'
+import { getVideoListByCategoryOrSearch } from '../../api/video'
 export default {
   name: 'MSite',
   components: {
@@ -66,18 +63,26 @@ export default {
   data() {
     return {
       selectedTitle: '潮玩',// TODO 链接nav的选择项
-      msiteCategorys: undefined
+      msiteCategorys: undefined,
+      carouselImgList: undefined,
+      search: '',
+      pageSize: 10,
+      pageNo: 1,
+      videoList: undefined,
+      videoInfo: {
+        videoUrl: undefined,
+        id: undefined,
+        modifyTime: undefined,
+        modifyStr: undefined,
+        coverUrl: undefined,
+        isDelete: undefined,
+        likeCount: undefined,
+        viewCount: undefined,
+        selectEntities: undefined
+      }
     }
   },
   methods: {
-    test() {
-      userChangePwd()
-        .then(resp => {
-          if (resp && resp.success) {
-            console.log(resp);
-          }
-        });
-    },
     /**
      * 获取导航类目
      */
@@ -88,15 +93,54 @@ export default {
           if (resp && resp.success) {
             let tempArray = new Array();
             resp.data.forEach(item => {
-              tempArray.push(item.category);
+              tempArray.push(item);
             });
             self.msiteCategorys = tempArray;
+          } else {
+            self.$message.error('获取类目失败');
+          }
+        });
+    },
+    getCarouselListMsite() {
+      const self = this;
+      getCarouselList()
+        .then(resp => {
+          if (resp && resp.success) {
+            let tempArray = new Array();
+            resp.data.forEach(item => {
+              tempArray.push(item.url);
+            });
+            self.carouselImgList = tempArray;
+          } else {
+            self.$message.error('获取轮播图失败');
+          }
+        });
+    },
+    getNavItemList(item) {
+      const self =  this;
+      console.log(item.id);
+      let params = {
+        category: item.id,
+        search: '',
+        pageSize: 10,
+        pageNo: 1
+      };
+      getVideoListByCategoryOrSearch(params)
+        .then(resp => {
+          if (resp && resp.success) {
+            let tempArray = new Array();
+            resp.data.forEach(item => {
+              tempArray.push(item);
+            });
+            self.videoList = tempArray;
+            self.selectedTitle = item.category;
           }
         });
     }
   },
   created() {
     this.getCategorysMsite();
+    this.getCarouselListMsite();
   }
 }
 </script>
@@ -166,4 +210,6 @@ export default {
   .msite-footer
     width 100%
     flex 0 0 auto
+  .msite-video-list
+    margin 10px 10px
 </style>

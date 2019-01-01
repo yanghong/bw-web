@@ -1,18 +1,18 @@
 <template>
     <div class="single-video-container">
-      <div class="video-cover">
-        <div class="title">
-          <p>{{videoTitle}}123</p>
+      <div class="single-video-video-cover" @click="gotoVideoDetail(selectEntities)">
+        <div class="single-video-title">
+          <p>{{title}}</p>
         </div>
       </div>
-      <div class="video-info">
-        <div class="visit-number">
-          <img src="../../assets/images/videoDetail/visit-number.png" alt="">{{visitNumber}}
+      <div class="single-video-video-info">
+        <div class="single-video-visit-number">
+          <img src="../../assets/images/videoDetail/visit-number.png" alt="">{{viewCount}}
         </div>
-        <div class="nice-number">
-          <img src="../../assets/images/videoDetail/niced-icon.png" alt="">{{niceNumber}}
+        <div class="single-video-nice-number">
+          <img src="../../assets/images/videoDetail/niced-icon.png" alt="">{{likeCount}}
         </div>
-        <div class="list-number">
+        <div class="single-video-list-number">
           <img src="../../assets/images/videoDetail/comment-icon.png" alt="">{{listNumber}}
         </div>
       </div>
@@ -22,12 +22,26 @@
 <script>
   export default {
     name: 'singleVideo',
+    props:[
+      "viewCount",
+      "likeCount",
+      "coverUrl",
+      "introduction",
+      "selectEntities",
+      "title",
+      "video"
+    ],
     data() {
       return {
-        visitNumber: '999+',
-        niceNumber: '999+',
+        // viewCount: '999+',
+        // likeCount: '999+',
         listNumber: '999+',
-        videoTitle: '又来放毒气了，最丑朱雀来了',
+        // videoTitle: '又来放毒气了，最丑朱雀来了',
+      }
+    },
+    methods: {
+      gotoVideoDetail(selectEntities) {
+        this.$router.push({ name: 'showDetail',params:{selectEntities:selectEntities}});
       }
     }
   }
@@ -41,12 +55,12 @@
     display -webkit-flex
     -webkit-flex-direction column
     flex-direction column
-  .video-cover
+  .single-video-video-cover
     position relative
     width 331px
     height 173px
     background-image url("../../assets/images/videoDetail/background-image.png")
-  .video-cover .title
+  .single-video-video-cover .single-video-title
     position absolute
     left 0px
     bottom 0px
@@ -60,19 +74,19 @@
     margin-left 10px
     margin-bottom 5px
     color white
-  .video-info
+  .single-video-video-info
     width 100%
     height 10%
     display flex
-  .visit-number
+  .single-video-visit-number
     margin-left 9px
     margin-top 5px
     margin-right 30px
-  .nice-number
+  .single-video-nice-number
     margin-top 4px
     margin-left 30px
     margin-right 30px
-  .list-number
+  .single-video-list-number
     margin-top 10px
     margin-left 30px
 </style>

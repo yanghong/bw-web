@@ -55,8 +55,3 @@ export function deleteVideoById(params) {
   })
 };
 
-export function getVideoListByCategoryOrSearch(params) {
-  return axios.get(url.getVideoListByCategoryOrSearch, {params}).then((response) => {
-    return response.data
-  })
-};

@@ -54,3 +54,9 @@ export function getFansList(params){
     return response.data
   })
 };
+
+export function getUserInfo(params){
+  return axios.get(url.getFansList, {params}).then((response) => {
+    return response.data
+  })
+};

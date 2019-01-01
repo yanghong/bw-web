@@ -1,20 +1,20 @@
 <template>
-  <a-layout class="container">
-    <a-layout-header class="header">
+  <div class="show-detail-container">
+    <div class="show-detail-header">
       <BannerBw></BannerBw>
-    </a-layout-header>
-    <a-layout class="layout">
-      <div class="main-content">
-        <a-row class="video-introduction">
+    </div>
+    <div class="show-detail-layout">
+      <div class="show-detail-main-content">
+        <a-row class="show-detail-video-introduction">
           <a-col :span="6">{{videoName}}</a-col>
           <a-col :span="6">{{videoTime}}</a-col>
           <a-col :span="6">{{introduction}}</a-col>
           <a-col :span="6"><button>展开</button></a-col>
         </a-row>
-        <div class="video_list">
-          <div class="video_ls clear"  ref="videoLs">
-            <div class="video_shows" v-for="(item,index) in srclist">
-              <div v-if="item.imsrc" class="div_videos" >
+        <div class="show-detail-video_list">
+          <div class="show-detail-video_ls clear"  ref="videoLs">
+            <div class="show-detail-video_shows" v-for="(item,index) in srclist">
+              <div v-if="item.imsrc" class="show-detail-div_videos" >
                 <img :src="'../../static/images/'+item.imsrc+'.jpg'" :ref="index"/>
               </div>
               <div v-if="item.videosrc"  class="div_videos" >
@@ -39,17 +39,17 @@
             </div>
           </div>
         </div>
-        <a-row class="videoRelate">
-          <a-col :span="4" class="visit-number">
+        <a-row class="show-detail-videoRelate">
+          <a-col :span="4" class="show-detail-visit-number">
             <img src="../../assets/images/videoDetail/visit-number.png" alt="visitIcon">
             <span>{{visitNumber}}</span>
           </a-col>
-          <a-col :span="4" class="nice-number">
+          <a-col :span="4" class="show-detail-nice-number">
             <img src="../../assets/images/videoDetail/niced-icon.png" alt="visitNiceIcon">
             <img src="../../assets/images/videoDetail/niced.png" alt="visitedNice">
             <span>{{niceNumber}}</span>
           </a-col>
-          <a-col :span="4" class="collect-number">
+          <a-col :span="4" class="show-detail-collect-number">
             <img src="../../assets/images/videoDetail/collect-number.png" alt="visitCollect">
             <img src="../../assets/images/videoDetail/collect-number-icon.png" alt="visitCollectIcon">
             <span>{{collectNumber}}</span>
@@ -64,7 +64,7 @@
             <div>
               <div>
                 <img src="../../assets/images/videoDetail/lighting.png" alt="lighting">
-                <a class="lighting-ta">电TA</a>
+                <a class="show-detail-lighting-ta">电TA</a>
               </div>
               <div>
                 <span>一个电池只能电一次哦~</span>
@@ -73,31 +73,31 @@
           </a-col>
         </a-row>
       </div>
-      <!--<div class="main-sider">-->
-        <!--<div class="user-about">-->
-          <!--<div class="user-about-content">-->
-            <!--<div class="userInfo-avatar">-->
-              <!--<img src="../../assets/images/videoDetail/avatar.png" alt="avatar">-->
-            <!--</div>-->
-            <!--<div class="userInfo-text">-->
-              <!--<div class="nick-name-lv">-->
-                <!--<h2><a href="">{{nikeName}}</a></h2><span>lv2</span>-->
-              <!--</div>-->
-              <!--&lt;!&ndash;<img src="" alt="">&ndash;&gt;<span>厂牌</span>-->
-              <!--<span>{{personalIntroduction}}</span>-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--<div class="concern-message">-->
-            <!--<a-button>关注{{concernNumber}}</a-button>-->
-            <!--<img src="../../assets/images/videoDetail/private-message.png" alt="privateMessage">-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="recommend-video">-->
-          <!--<SingleVideo></SingleVideo>-->
-        <!--</div>-->
-      <!--</div>-->
-    </a-layout>
-</a-layout>
+      <div class="show-detail-main-sider">
+        <div class="show-detail-user-about">
+          <div class="show-detail-user-about-content">
+            <div class="show-detail-userInfo-avatar">
+              <img src="../../assets/images/videoDetail/avatar.png" alt="avatar">
+            </div>
+            <div class="show-detail-userInfo-text">
+              <div class="show-detail-nick-name-lv">
+                <h2><a href="">{{nikeName}}</a></h2><span>lv2</span>
+              </div>
+              <!--<img src="" alt="">--><span>厂牌</span>
+              <span>{{personalIntroduction}}</span>
+            </div>
+          </div>
+          <div class="show-detail-concern-message">
+            <a-button>关注{{concernNumber}}</a-button>
+            <img src="../../assets/images/videoDetail/private-message.png" alt="privateMessage">
+          </div>
+        </div>
+        <div class="show-detail-recommend-video">
+          <SingleVideo></SingleVideo>
+        </div>
+      </div>
+    </div>
+</div>
 </template>
 
 <script>
@@ -209,36 +209,35 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  .container
+  .show-detail-container
     width 75%
     margin 0 auto
-  .header
-    width 70%
-    height 64px
-    background-color white
-  .layout
+  .show-detail-header
     width 100%
-  .main-content
-    width 70%
+    margin 0 auto
+  .show-detail-layout
+    width 100%
+  .show-detail-main-content
+    width 100%
     padding 10px
-  .video-introduction
-    width 70%
+  .show-detail-video-introduction
+    width 100%
     height 70px
     background-color white
     margin 0 auto
-  .video_list
-    width 70%
+  .show-detail-video_list
+    width 100%
     height 555px
     margin 0 auto
-  .videoRelate
-    width 70%
+  .show-detail-videoRelate
+    width 100%
     height 100px
     margin 0 auto
-  .main-sider
+  .show-detail-main-sider
     width 30%
     position fixed
     background-color red
     margin-right 40px
-  .user-about
+  .show-detail-user-about
     height 290px
 </style>

@@ -66,10 +66,19 @@
 
 <script>
   import BannerBw from '../../components/Banner/BannerBw.vue'
+  import FooterGuide from '../../components/FooterGuide/FooterGuide'
+  import { upload } from '../../api/common'
   export default {
     name: 'ShowPublish',
     components: {
-      BannerBw
+      BannerBw,
+      FooterGuide
+    },
+    data () {
+      return {
+        imageUrl: '',
+        loading: false
+      }
     },
     methods: {
       handleChange(value) {
@@ -99,6 +108,13 @@
         }
         return isJPG && isLt2M
       },
+      uploagVideo() {
+        const self = this;
+        upload()
+          .then(resp => {
+
+          });
+      }
     }
   }
 </script>
