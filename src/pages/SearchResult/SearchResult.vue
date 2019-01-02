@@ -5,7 +5,8 @@
       <div class="search-result-video-list" v-for="item in videoList">
         <SingleVideo  v-bind:view-count="item.viewCount" v-bind:like-count="item.likeCount"
                       v-bind:cover-url="item.coverUrl" v-bind:introduction="item.introduction"
-                      v-bind:title="item.title" v-bind:video="item" v-bind:selectEntities="item.selectEntities"></SingleVideo>
+                      v-bind:title="item.title" v-bind:video="item"
+                      v-bind:selectEntities="item.selectEntities"></SingleVideo>
       </div>
     </div>
   </div>
@@ -40,15 +41,21 @@
         getVideoListByCategoryOrSearch(params)
           .then(resp => {
             if (resp && resp.success) {
-              console.log(resp);
-              let tempArray = new Array();
-              resp.data.forEach(item => {
-                tempArray.push(item);
-              });
-              self.videoList = tempArray;
-            }
-          });
-      }
+              if (resp.data) {
+                console.log(resp);
+                let tempArray = new Array();
+                resp.data.forEach(item => {
+                  tempArray.push(item);
+                });
+                self.videoList = tempArray;
+              } else {
+                self.$message.error('当前没有搜索结果');
+              }
+            } else {
+                self.$message.error('搜索失败');
+              }
+            });
+          }
     },
     created() {
       this.oncreated();
@@ -59,7 +66,7 @@
 <style lang="stylus" rel="stylesheet/stylus">
   .search-result-content
     width 75%
-    margin 0 auto
+    margin 10px auto
     display flex
     display -webkit-flex
     flex-direction column

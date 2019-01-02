@@ -1,57 +1,60 @@
 <template>
   <div>
-    <BannerBw></BannerBw>
-    <div id="main-container">
-      <div id="content">
-        <div>
-          <a-carousel autoplay class="carousel">
-            <div class="carousel-img" v-for="img in carouselImgList"><img :src="img" alt="background"></div>
+    <div id="msite-main-container">
+      <BannerBw class="msite-banner-bw"></BannerBw>
+      <div id="msite-content">
+        <div class="msite-carousel">
+          <a-carousel autoplay>
+            <div class="carousel-img" v-for="img in carouselImgList">
+              <img :src="img" alt="background">
+            </div>
           </a-carousel>
       </div>
-        <div class="nav">
-          <div class="nav-a" v-for="item in msiteCategorys">
+        <div class="msite-nav">
+          <div class="msite-nav-a" v-for="item in msiteCategorys">
             <a @click="getNavItemList(item)">{{item.category}}</a>
           </div>
         </div>
         <a-divider style="margin-top: 0px; margin-bottom: 0px;"/>
-        <div class="suggest-video">
+        <div class="msite-suggest-video">
           <a-row type="flex" justify="center" align="top">
-            <a-col class="gutter-row" :span="8">
+            <a-col class="msite-gutter-row" :span="8">
               <img src="../../assets/images/msite/met-1.jpg" alt="met">
             </a-col>
-            <a-col class="gutter-row" :span="8">
+            <a-col class="msite-gutter-row" :span="8">
               <img src="../../assets/images/msite/met-2.jpg" alt="met">
             </a-col>
-            <a-col class="gutter-row" :span="8">
+            <a-col class="msite-gutter-row" :span="8">
               <img src="../../assets/images/msite/met-3.jpg" alt="met">
             </a-col>
           </a-row>
         </div>
-        <div class="title">
-          <div class="title-left">
+        <div class="msite-title">
+          <div class="msite-title-left">
             <h1>{{selectedTitle}}</h1><span>推荐视频</span>
           </div>
-          <div class="title-right">
-            <!--TODO 确定链接-->
-            <a href="">更多></a>
+          <div class="msite-title-right">
+            <a @click="gotoMsiteMore(selectedTitle)">更多></a>
           </div>
         </div>
-        <div class="msite-video-list" v-for="item in videoList">
-          <SingleVideo  v-bind:view-count="item.viewCount" v-bind:like-count="item.likeCount"
-                        v-bind:cover-url="item.coverUrl" v-bind:introduction="item.introduction"
-                        v-bind:title="item.title" v-bind:video="item" v-bind:selectEntities="item.selectEntities"></SingleVideo>
+        <div class="msite-video-list">
+          <div class="msite-video-item" v-for="item in videoList">
+            <MsiteSingleVideo  v-bind:view-count="item.viewCount" v-bind:like-count="item.likeCount"
+                          v-bind:cover-url="item.coverUrl" v-bind:introduction="item.introduction"
+                          v-bind:title="item.title" v-bind:video="item" v-bind:selectEntities="item.selectEntities"></MsiteSingleVideo>
+          </div>
         </div>
       </div>
-      <div class="msite-footer">
-        <FooterGuide></FooterGuide>
-      </div>
+      <!--<div class="msite-footer">-->
+        <!--<FooterGuide></FooterGuide>-->
+      <!--</div>-->
     </div>
   </div>
 </template>
 
 <script>
 import BannerBw from '../../components/Banner/BannerBw.vue'
-import SingleVideo from '../../components/singleVideo/singleVideo.vue'
+import MsiteSingleVideo from '../../components/singleVideo/msiteSingleVideo.vue'
 import FooterGuide from '../../components/FooterGuide/FooterGuide.vue'
 import { getCategotys,getCarouselList } from '../../api/msite'
 import { getVideoListByCategoryOrSearch } from '../../api/video'
@@ -60,11 +63,11 @@ export default {
   components: {
     FooterGuide,
     BannerBw,
-    SingleVideo
+    MsiteSingleVideo
   },
   data() {
     return {
-      selectedTitle: '潮玩',// TODO 链接nav的选择项
+      selectedTitle: undefined,
       msiteCategorys: undefined,
       carouselImgList: undefined,
       search: '',
@@ -112,6 +115,7 @@ export default {
             resp.data.forEach(item => {
               tempArray.push(item.url);
             });
+            console.log(tempArray);
             self.carouselImgList = tempArray;
           } else {
             self.$message.error('获取轮播图失败');
@@ -123,8 +127,8 @@ export default {
       let params = {
         category: item.id,
         search: '',
-        pageSize: 10,
-        pageNo: 1
+        pageSize: self.pageSize,
+        pageNo: self.pageNo
       };
       getVideoListByCategoryOrSearch(params)
         .then(resp => {
@@ -137,6 +141,16 @@ export default {
             self.selectedTitle = item.category;
           }
         });
+    },
+    gotoMsiteMore(selectedTitle) {
+      const self = this;
+      if (typeof(selectedTitle) === 'undefined' ) {
+        self.$message.error('获取更多的条件为空');
+        return
+      } else {
+        console.log(selectedTitle);
+        self.$router.push({ name: 'msiteMore', params: {selectedTitle: selectedTitle}});
+      }
     }
   },
   created() {
@@ -147,7 +161,9 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-  #content
+  .msite-banner-bw
+    z-index 999
+  #msite-content
     width 75%
     height 100%
     margin 0 auto
@@ -155,23 +171,23 @@ export default {
     display -webkit-flex
     flex-direction column
     justify-content center
-  .carousel
+  .msite-carousel
     margin-left auto
     margin-right auto
   .carousel-img
     width 100%
     margin-top 1px
     margin-left 0px
-  .nav
+  .msite-nav
     width 100%
     height 55px
     display flex
     justify-content center
-  .nav .nav-a
+  .msite-nav .msite-nav-a
     margin 10px 5px 5px 5px
     color black
     flex-direction row
-  .nav .nav-a a
+  .msite-nav .msite-nav-a a
     width 82px
     height 20px
     font-family MicrosoftYaHei
@@ -184,33 +200,40 @@ export default {
     margin-right 15px
     &:hover
       color coral
-  .suggest-video >>> .a-row > div
+  .msite-suggest-video >>> .a-row > div
     background transparent
     border 0
-  .gutter-row img
+  .msite-gutter-row img
     width 95%
-  .title
+  .msite-title
     width 100%
     height 30px
     margin-top 40px
     position relative
-  .title .title-left
+  .msite-title .msite-title-left
     display flex
     flex-direction row
-  .title .title-left span
+  .msite-title .msite-title-left span
     margin-top 10px
     margin-left 5px
-  .title .title-right
+  .msite-title .msite-title-right
     position absolute
     top 5px
     right 0px
-  .title .title-right a
+  .msite-title .msite-title-right a
     color grey
-  .video-list
+  .msite-video-list
     width 100%
   .msite-footer
     width 100%
     flex 0 0 auto
   .msite-video-list
+    width 1340px
+    height 150px
+    display flex
+    display -webkit-flex
+    flex-direction row
+    margin 10px 10px
+  .msite-video-item
     margin 10px 10px
 </style>

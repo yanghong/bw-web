@@ -5,7 +5,7 @@
     </div>
     <div class="msite-more-content">
       <div class="msite-more-title">
-        <span>潮玩</span>
+        <span>{{category}}</span>
       </div>
       <div class="msite-more-select-nav">
         <div class="msite-more-select-nav-time">
@@ -19,8 +19,11 @@
         </div>
       </div>
       <a-divider style="margin-top: 0px; margin-bottom: 0px;"/>
-      <div class="msite-more-video-list">
-        <SingleVideo></SingleVideo>
+      <div class="msite-more-video-list" v-for="item in videoList">
+        <MsiteSingleVideo  v-bind:view-count="item.viewCount" v-bind:like-count="item.likeCount"
+                           v-bind:cover-url="item.coverUrl" v-bind:introduction="item.introduction"
+                           v-bind:title="item.title" v-bind:video="item"
+                           v-bind:selectEntities="item.selectEntities"></MsiteSingleVideo>
       </div>
     </div>
     <div class="msite-more-footer">
@@ -32,23 +35,57 @@
 
 <script>
   import BannerBw from '../../components/Banner/BannerBw.vue'
-  import SingleVideo from '../../components/singleVideo/singleVideo.vue'
+  import MsiteSingleVideo from '../../components/singleVideo/msiteSingleVideo.vue'
   import FooterGuide from '../../components/FooterGuide/FooterGuide.vue'
+  import { getVideoListByCategoryOrSearch } from '../../api/video'
   export default {
     name: 'MSiteMore',
     components: {
       FooterGuide,
       BannerBw,
-      SingleVideo
+      MsiteSingleVideo
     },
     data() {
       return {
+        videoList: undefined,
+        getMoreVideoParam: undefined,
+        pageSize: 10,
+        pageNo: 1,
+        category: undefined
       }
     },
     methods: {
+      getMoreVideo() {
+        const self = this;
+        let getMoreVideoParam = {
+          search: self.$route.params.selectedTitle,
+          category: '',
+          pageSize: self.pageSize,
+          pageNo: self.pageNo
+        };
+        console.log('getMoreVideoParam:',getMoreVideoParam);
+        getVideoListByCategoryOrSearch(getMoreVideoParam)
+          .then(resp => {
+            console.log(resp);
+            if (resp && resp.success) {
+              let tempArray = new Array();
+              resp.data.forEach(item => {
+                tempArray.push(item);
+                self.category = item.categoryEntity.category;
+              });
+              self.videoList = tempArray;
+              console.log(self.videoList);
+            } else {
+              self.$message.error("getMoreVideo failed");
+            }
+          });
+      },
       onChange() {
 
       }
+    },
+    created() {
+      this.getMoreVideo();
     }
   }
 </script>

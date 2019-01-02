@@ -29,7 +29,7 @@ export default {
           if(this.count > 0 && this.count <= TIME_COUNT){
             this.count--;
           }else{
-            this.$router.push({name:'/msite'});
+            this.$router.push({name:'msite'});
             this.show = true;
             clearInterval(this.timer);
             this.timer = null;

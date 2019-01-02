@@ -34,7 +34,7 @@ export default new Router({
       component: MSite
     },
     {
-      path: '/msite-more',
+      path: '/msite-more/:selectedTitle',
       name: 'msiteMore',
       component: MSiteMore
     },

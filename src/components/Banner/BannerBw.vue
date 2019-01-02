@@ -310,13 +310,7 @@
   methods: {
     onSearch (value) {
       const self = this;
-      let params = {
-        category: '',
-        search: value,
-        pageSize: 10,
-        pageNo: 1
-      };
-      this.$router.push({ name: 'searchResult', params: { value: value }});
+      self.$router.push({ name: 'searchResult', params: { value: value }});
     },
     showModal () {
       this.accountLoginVisible = true
